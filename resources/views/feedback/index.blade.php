@@ -2,16 +2,16 @@
     <div class="max-w-2xl mx-auto p-4">
         <form method="POST" action="{{ route('feedback.store') }}">
             @csrf
-            <input type="text" name="nama" id="nama" class="block w-full mt-4 border-gray-300 rounded-md" placeholder="Masukkan nama anda"></input>
+            <input type="text" name="nama" id="nama" class="block w-full mt-4 border-gray-300 rounded-md" placeholder="Masukkan nama"></input>
             <x-input-error :messages="$errors->get('message')" class="mt-4" />
 
-            <input type="text" name="email" id="email" class="block w-full mt-4 border-gray-300 rounded-md" placeholder="Masukkan email anda"></input>
+            <input type="text" name="email" id="email" class="block w-full mt-4 border-gray-300 rounded-md" placeholder="Masukkan email"></input>
             <x-input-error :messages="$errors->get('message')" class="mt-4" />
 
-            <textarea name="pesan" id="pesan" class="block w-full mt-4 border-gray-300 rounded-md" placeholder="Masukkan Pesan anda"></textarea>
+            <textarea name="pesan" id="pesan" class="block w-full mt-4 border-gray-300 rounded-md" placeholder="Masukkan Pesan"></textarea>
             <x-input-error :messages="$errors->get('suggestion')" class="mt-4" />
 
-            <x-primary-button class="mt-4">Kirim Pesan</x-primary-button>
+            <x-primary-button class="mt-4">Kirim</x-primary-button>
         </form>
 
         <div class="mt-6">
