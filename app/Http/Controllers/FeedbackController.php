@@ -37,12 +37,12 @@ class FeedbackController extends Controller
        ]);
 
         $feedback = new Feedback($validated);
-        $feedback->user_id = $request->user() ? $request->user()->id : null; // Jika user opsional
-        $feedback->save();
+        // $feedback->user_id = $request->user() ? $request->user()->id : null; // Jika user opsional
+        // $feedback->save();
 
-    //    return $this->hasMany(Feedback::class);
-    //    $request->user()->feedback()->create($validated);
-    //    return redirect()->route('feedback.index')->with('success','Feedback berhasil dikirim!');
+       //return $this->hasMany(Feedback::class);
+            $request->user()->feedback()->create($validated);
+            return redirect()->route('feedback.index')->with('success','Feedback berhasil dikirim!');
     }
 
 

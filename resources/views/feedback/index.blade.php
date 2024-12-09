@@ -27,14 +27,14 @@
                     @if ($fb->pesan)
                         <p><strong>Pesan:</strong> {{ $fb->pesan }}</p>
                     @endif
-                    <p><small>Ditulis oleh: {{ $fb>user->name }}</small></p>
+                    <p><small>Ditulis oleh: {{ $fb->user->name }}</small></p>
                     <a href="{{ route('feedback.edit', $fb) }}"
                     class="inline-flex items-center px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md
                     hover:bg-blue-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-blue-500 transition">
                     <!-- Ikon Heroicons (Pencil Icon) -->
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h2M7 7h10l-1 14H8L7 7z" />
-                    </svg>
+                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-7 7-7-7" />
+                     </svg>
                     Edit
                     </a>
 
@@ -45,7 +45,7 @@
                             class="inline-flex items-center px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-md hover:bg-red-600 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-red-500 transition">
                             <!-- Ikon Trash -->
                             <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
-                               <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-7 7-7-7" />
+                                <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h2M7 7h10l-1 14H8L7 7z" />
                             </svg>
                             Delete
                         </button>
