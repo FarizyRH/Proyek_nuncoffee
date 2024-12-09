@@ -16,5 +16,16 @@ Route::middleware('auth')->group(function () {
     Route::patch('/profile', [ProfileController::class, 'update'])->name('profile.update');
     Route::delete('/profile', [ProfileController::class, 'destroy'])->name('profile.destroy');
 });
+use App\Http\Controllers\GaleriController;
+
+Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
+Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
+Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
+
+use App\Http\Controllers\QnAController;
+
+Route::middleware('auth')->group(function () {
+    Route::post('/qna', [QnAController::class, 'store'])->name('qna.store');
+});
 
 require __DIR__.'/auth.php';
