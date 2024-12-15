@@ -59,8 +59,12 @@ class FeedbackController extends Controller
      */
     public function edit(Feedback $feedback)
     {
-        $Feedback = Feedback::findOrFail($feedback->id);
-        return view('feedback.edit',compact('feedback'));
+        // Periksa apakah user adalah admin
+        if (!auth()->check() || !auth()->user()->is_admin) {
+            return redirect()->route('feedback.index')->with('error', 'Anda tidak memiliki akses untuk mengedit feedback.');
+        }
+
+        return view('feedback.edit', compact('feedback'));
     }
 
     /**
@@ -68,25 +72,38 @@ class FeedbackController extends Controller
      */
     public function update(Request $request, Feedback $feedback)
     {
+        // Periksa apakah user adalah admin
+        if (!auth()->check() || !auth()->user()->is_admin) {
+            return redirect()->route('feedback.index')->with('error', 'Anda tidak memiliki akses untuk memperbarui feedback.');
+        }
+
+        // Validasi data
         $validated = $request->validate([
             'nama' => 'required|string|max:255',
             'email' => 'required|email|max:255',
             'pesan' => 'required|string',
-       ]);
+        ]);
 
-       $feedback = Feedback::findOrFail($feedback->id);
-       $request->user()->feedback()->update($validated);
+        // Update feedback
+        $feedback->update($validated);
 
-       return redirect()->route('feedback.index')->with('success',
-       'Feedback berhasil di update!');
+        return redirect()->route('feedback.index')->with('success', 'Feedback berhasil diperbarui!');
     }
+
 
     /**
      * Remove the specified resource from storage.
      */
     public function destroy(Feedback $feedback)
     {
+        // Periksa apakah user adalah admin
+        if (!auth()->check() || !auth()->user()->is_admin) {
+            return redirect()->route('feedback.index')->with('error', 'Anda tidak memiliki akses untuk menghapus feedback.');
+        }
+
+        // Hapus feedback
         $feedback->delete();
         return redirect()->route('feedback.index')->with('success', 'Feedback berhasil dihapus!');
     }
+
 }

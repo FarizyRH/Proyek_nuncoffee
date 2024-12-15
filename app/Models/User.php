@@ -24,21 +24,6 @@ class User extends Authenticatable
         'password',
         'role',
     ];
-     // Tambahkan fungsi untuk role
-     public function isAdmin()
-     {
-         return $this->role === 'admin';
-     }
-
-     public function isSuperAdmin()
-     {
-         return $this->role === 'super_admin';
-     }
-
-     public function isGuest()
-     {
-         return $this->role === 'guest';
-     }
 
     /**
      * The attributes that should be hidden for serialization.
@@ -49,6 +34,21 @@ class User extends Authenticatable
         'password',
         'remember_token',
     ];
+
+    public function isAdmin()
+    {
+        return $this->role === 'admin';
+    }
+
+    public function isSuperAdmin()
+    {
+        return $this->role === 'super_admin';
+    }
+
+    public function isGuest()
+    {
+        return $this->role === 'guest';
+    }
 
     /**
      * Get the attributes that should be cast.
@@ -62,9 +62,14 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function feedback(): HasMany
-    {
-        return $this->hasMany(Feedback::class);
-    }
+    // public function feedback(): HasMany
+    // {
+    //     return $this->hasMany(Feedback::class);
+    // }
+
+    // public function hasRole($role)
+    // {
+    //     return $this->roles()->where('name', $role)->exists();
+    // }
 
 }
