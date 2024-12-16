@@ -1,14 +1,17 @@
 <?php
 
 use App\Http\Controllers\ProfileController;
+use App\Models\Galeri;
 use Illuminate\Support\Facades\Route;
 
 Route::get('/', function () {
-    return view('welcome');
+    $items = Galeri::all();
+    return view('home', compact('items'));
 });
 
 Route::get('/dashboard', function () {
-    return view('dashboard');
+    $items = Galeri::all();
+    return view('home', compact('items'));
 })->middleware(['auth', 'verified'])->name('dashboard');
 
 Route::middleware('auth')->group(function () {
@@ -18,14 +21,12 @@ Route::middleware('auth')->group(function () {
 });
 use App\Http\Controllers\GaleriController;
 
-Route::get('/galeri', [GaleriController::class, 'index'])->name('galeri.index');
-Route::post('/galeri', [GaleriController::class, 'store'])->name('galeri.store');
-Route::delete('/galeri/{id}', [GaleriController::class, 'destroy'])->name('galeri.destroy');
+Route::resource('galeri', GaleriController::class);
 
-use App\Http\Controllers\QnAController;
 
-Route::middleware('auth')->group(function () {
-    Route::post('/qna', [QnAController::class, 'store'])->name('qna.store');
+Route::get('/testhome',function(){
+    $items = Galeri::all();
+    return view('home', compact('items'));
 });
 
 require __DIR__.'/auth.php';

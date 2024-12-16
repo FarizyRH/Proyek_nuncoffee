@@ -1,76 +1,28 @@
-<!DOCTYPE html>
-<html lang="en">
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Galeri - Nun Coffee</title>
-    <style>
-        body {
-            font-family: Arial, sans-serif;
-            margin: 20px;
-        }
-        .container {
-            max-width: 800px;
-            margin: auto;
-        }
-        .gallery {
-            display: flex;
-            flex-wrap: wrap;
-            gap: 10px;
-        }
-        .gallery img {
-            width: 100px;
-            height: 100px;
-            object-fit: cover;
-            border-radius: 5px;
-        }
-        .form-group {
-            margin-bottom: 15px;
-        }
-        button {
-            background-color: #5cb85c;
-            color: white;
-            border: none;
-            padding: 10px 15px;
-            border-radius: 5px;
-            cursor: pointer;
-        }
-        button:hover {
-            background-color: #4cae4c;
-        }
-    </style>
-</head>
-<body>
-    <div class="container">
-        <h1>Galeri - Nun Coffee</h1>
-
-        <!-- Form Tambah Foto -->
-        <form action="{{ route('galeri.store') }}" method="POST" enctype="multipart/form-data">
-            @csrf
-            <div class="form-group">
-                <label for="image">Tambah Foto:</label>
-                <input type="file" name="image" id="image" required>
-            </div>
-            <button type="submit">Unggah</button>
-        </form>
-
-        @if (session('success'))
-            <p style="color: green;">{{ session('success') }}</p>
+<x-app-layout>
+    <div class="container py-5">
+        <a href="{{ route('galeri.create') }}" class="btn btn-primary mb-4">Tambah Galeri</a>
+        @if(session('success'))
+            <div class="alert alert-success mb-4">{{ session('success') }}</div>
         @endif
-
-        <!-- Galeri Foto -->
-        <div class="gallery">
-            @foreach ($galeri as $item)
-                <div>
-                    <img src="{{ asset('storage/' . $item->image) }}" alt="Galeri Foto">
-                    <form action="{{ route('galeri.destroy', $item->id) }}" method="POST" style="margin-top: 5px;">
-                        @csrf
-                        @method('DELETE')
-                        <button type="submit">Hapus</button>
-                    </form>
+        <div class="row g-4">
+            @foreach($galeris as $galeri)
+            <div class="col-md-4">
+                <div class="card shadow-sm">
+                    <img src="{{ asset('storage/' . $galeri->image) }}" class="card-img-top" alt="{{ $galeri->title }}" style="height: 200px; object-fit: cover;">
+                    <div class="card-body">
+                        <h5 class="card-title">{{ $galeri->title }}</h5>
+                        <div class="d-flex justify-content-between">
+                            <a href="{{ route('galeri.edit', $galeri->id) }}" class="btn btn-warning btn-sm">Edit</a>
+                            <form action="{{ route('galeri.destroy', $galeri->id) }}" method="POST" class="d-inline">
+                                @csrf
+                                @method('DELETE')
+                                <button class="btn btn-danger btn-sm">Hapus</button>
+                            </form>
+                        </div>
+                    </div>
                 </div>
+            </div>
             @endforeach
         </div>
     </div>
-</body>
-</html>
+</x-app-layout>

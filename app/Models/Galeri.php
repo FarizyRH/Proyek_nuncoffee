@@ -9,10 +9,5 @@ class Galeri extends Model
 {
     use HasFactory;
 
-    /**
-     * The attributes that are mass assignable.
-     *
-     * @var array
-     */
-    protected $fillable = ['image'];
+    protected $fillable = ['title', 'image']; // Izinkan kolom title dan image untuk mass assignment
 }
