@@ -1,0 +1,17 @@
+#lokasi .map-container {
+    display: flex;
+    justify-content: center; 
+    align-items: center; 
+    margin-top: 20px;
+    padding: 10px;
+    background-color: #fff;
+    border-radius: 8px;
+    box-shadow: 0 4px 10px rgba(0, 0, 0, 0.1);
+}
+
+#lokasi .map-container iframe {
+    border-radius: 8px;
+    width: 100%; 
+    max-width: 600px; 
+    height: 450px;
+}

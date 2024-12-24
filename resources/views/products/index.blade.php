@@ -13,25 +13,25 @@
             <div class="col-md-4">
                 <select name="category" class="form-control">
                     <option value="">Pilih Kategori</option>
-                    <option value="coffe" {{ request()->category == 'coffe' ? 'selected' : '' }}>Coffe</option>
-                    <option value="noncoffe" {{ request()->category == 'noncoffe' ? 'selected' : '' }}>Non-Coffe</option>
-                    <option value="food" {{ request()->category == 'food' ? 'selected' : '' }}>Food</option>
+                    <option value="Coffe" {{ request()->category == 'coffe' ? 'selected' : '' }}>Coffe</option>
+                    <option value="Milk" {{ request()->category == 'milk' ? 'selected' : '' }}>Milk</option>
+                    <option value="Food" {{ request()->category == 'food' ? 'selected' : '' }}>Food</option>
                 </select>
             </div>
             <div class="col-md-4">
                 <button type="submit" class="btn btn-primary">Cari</button>
+                @if (auth()->user()->role === 'admin')
+                    <a href="{{ route('products.create') }}" class="btn btn-primary">Buat Produk</a>
+                @endif
             </div>
         </div>
     </form>
-
-    @if (auth()->user()->role === 'admin')
-        <a href="{{ route('products.create') }}" class="btn btn-primary mb-3">Buat Produk</a>
-    @endif
 
     <table class="table">
         <thead>
             <tr>
                 <th>Nama</th>
+                <th>Gambar</th>
                 <th>Deskripsi</th>
                 <th>Harga</th>
                 <th>Kategori</th>
@@ -42,11 +42,16 @@
             @foreach ($products as $product)
                 <tr>
                     <td>{{ $product->name }}</td>
+                    <td>    
+                         <img src="{{ asset('storage/' . $product->gambar) }}" 
+                                 alt="Gambar Produk" 
+                                 class="img-fluid rounded" 
+                                 style="max-width: 100px;">
+                    </td>
                     <td>{{ $product->description }}</td>
                     <td>{{ $product->price }}</td>
                     <td>{{ $product->category }}</td>
                     <td>
-                        <a href="{{ route('products.show', $product) }}" class="btn btn-info btn-sm">Lihat</a>
                         @if (auth()->user()->role === 'admin')
                             <a href="{{ route('products.edit', $product) }}" class="btn btn-warning btn-sm">Edit</a>
                             <form action="{{ route('products.destroy', $product) }}" method="POST" style="display:inline;">

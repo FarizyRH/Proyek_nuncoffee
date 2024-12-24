@@ -8,30 +8,40 @@ use Illuminate\Support\Facades\Storage;
 
 class ProductController extends Controller
 {
-    // Menampilkan daftar produk (Admin dan Non-Admin)
-    public function index(Request $request)
-    {
-        $query = Product::query();
 
-        // Fitur pencarian produk
-        if ($request->has('search') && $request->search != '') {
-            $query->where('name', 'like', '%' . $request->search . '%');
-        }
-    
-        if ($request->has('category') && $request->category != '') {
-            $query->where('category', 'like', '%' . $request->category . '%');
-        }
-        $products = $query->paginate(10);
-        return view('products.index', compact('products'));
+// Menampilkan daftar produk (Admin dan Non-Admin)
+public function index(Request $request)
+{
+    $query = Product::query();
+
+    // Fitur pencarian produk
+    if ($request->has('search') && $request->search != '') {
+        $query->where('name', 'like', '%' . $request->search . '%');
     }
 
-    // Melihat detail produk (Admin dan Non-Admin)
+    if ($request->has('search') && $request->category != '') {
+        $query->where('category', 'like', '%' . $request->category . '%');
+    }
+    
+    // Untuk Admin, tampilkan semua produk dengan kontrol penuh
+    if (auth()->user()->role === 'admin') {
+        $products = $query->paginate(10);
+        return view('product', compact('products'));
+    }
+
+    // Untuk User, tampilkan produk hanya untuk melihat dan mencari
+    $products = $query->paginate(10);
+    return view('productuser', compact('products'));
+}
+
+
+    // Melihat detail produk 
     public function show(Product $product)
     {
         return view('products.show', compact('product'));
     }
 
-    // Menampilkan form create produk (Admin Only)
+    // Menampilkan form create produk (Admin)
     public function create()
     {
         if (auth()->user()->role !== 'admin') {
@@ -41,7 +51,7 @@ class ProductController extends Controller
         return view('products.create');
     }
 
-    // Menyimpan produk baru (Admin Only)
+    // Menyimpan produk baru (Admin)
     public function store(Request $request)
     {
         if (auth()->user()->role !== 'admin') {
@@ -51,7 +61,7 @@ class ProductController extends Controller
         // Validasi input, termasuk gambar
         $request->validate([
             'name' => 'required|string|max:255',
-            'gambar' => 'required|image|mimes:jpg,png,jpeg,gif|max:2048', // Validasi gambar
+            'gambar' => 'required|image|mimes:jpg,png,jpeg,gif|max:10048', // Validasi gambar
             'description' => 'required|string',
             'price' => 'required|string',
             'category' => 'required|string',
@@ -61,7 +71,8 @@ class ProductController extends Controller
         $imagePath = null;
         if ($request->hasFile('gambar')) {
             // Menyimpan gambar ke folder public/products di storage
-            $imagePath = $request->file('gambar')->store('public/products');
+            $imagePath = $request->file('gambar')->store('products', 'public');
+
             // Menghilangkan prefix 'public/' untuk disimpan di database
             $imagePath = str_replace('public/', '', $imagePath);
         }
@@ -78,7 +89,7 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product created successfully.');
     }
 
-    // Menampilkan form edit produk (Admin Only)
+    // Menampilkan form edit produk (Admin)
     public function edit(Product $product)
     {
         if (auth()->user()->role !== 'admin') {
@@ -88,7 +99,7 @@ class ProductController extends Controller
         return view('products.edit', compact('product'));
     }
 
-    // Memperbarui data produk (Admin Only)
+    // Memperbarui data produk (Admin)
     public function update(Request $request, Product $product)
     {
         if (auth()->user()->role !== 'admin') {
@@ -98,7 +109,7 @@ class ProductController extends Controller
         // Validasi input, termasuk gambar
         $request->validate([
             'name' => 'required|string|max:255',
-            'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:2048', // Validasi gambar (opsional saat update)
+            'gambar' => 'nullable|image|mimes:jpg,png,jpeg,gif|max:10048', // Validasi gambar (opsional saat update)
             'description' => 'required|string',
             'price' => 'required|string',
             'category' => 'required|string',
@@ -112,7 +123,8 @@ class ProductController extends Controller
             }
 
             // Menyimpan gambar baru
-            $imagePath = $request->file('gambar')->store('public/products');
+            $imagePath = $request->file('gambar')->store('products', 'public');
+
             $imagePath = str_replace('public/', '', $imagePath);
             $product->gambar = $imagePath; // Update path gambar
         }
@@ -123,7 +135,7 @@ class ProductController extends Controller
         return redirect()->route('products.index')->with('success', 'Product updated successfully.');
     }
 
-    // Menghapus produk (Admin Only)
+    // Menghapus produk (Admin)
     public function destroy(Product $product)
     {
         if (auth()->user()->role !== 'admin') {

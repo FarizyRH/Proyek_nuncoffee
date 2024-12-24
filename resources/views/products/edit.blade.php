@@ -1,4 +1,6 @@
-@extends('layouts.app')
+@extends('layouts.landing')
+
+@section('title','Landing Page')
 
 @section('content')
 <div class="container mt-5">
@@ -10,12 +12,12 @@
 
         <div class="form-group">
             <label for="name">Nama Produk</label>
-            <input type="text" name="name" value="{{ $product->name }}" class="form-control" id="name" required>
+            <input type="text" name="name" value="{{ $product->name }}" class="form-control " id="name" required>
         </div>
 
         <div class="form-group">
             <label for="gambar">Gambar Produk</label>
-            <input type="file" name="gambar" class="form-control-file" id="gambar">
+            <input type="file" name="gambar" class="form-control-file btn-block mt-3 mb-3" id="gambar">
         </div>
 
         <div class="form-group">
@@ -29,12 +31,17 @@
         </div>
 
         <div class="form-group">
-            <label for="category">Kategori</label>
-            <input type="text" name="category" value="{{ $product->category }}" class="form-control" id="category" required>
+        <select name="category" class="form-control">
+                    <option value="">Masukkan Kategori</option>
+                    <option value="Coffe">Coffe</option>
+                    <option value="Milk" >Milk</option>
+                    <option value="Food" >Food</option>
+            </select>
+            
         </div>
 
-        <button type="submit" class="btn btn-warning btn-block">Perbarui Produk</button>
-        <a href="{{ route('products.index') }}" class="btn btn-secondary btn-block mt-2">Kembali</a>
+        <button type="submit" class="btn btn-warning btn-block mt-3 mb-3">Perbarui Produk</button>
+        <a href="{{ route('products.index') }}" class="btn btn-secondary btn-block mt-3 mb-3">Kembali</a>
     </form>
 </div>
 @endsection

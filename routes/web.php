@@ -1,6 +1,7 @@
 <?php
 
 use App\Http\Controllers\ProductController;
+use App\Http\Controllers\AboutusController;
 use App\Http\Controllers\ProfileController;
 use Illuminate\Support\Facades\Route;
 
@@ -20,6 +21,10 @@ Route::middleware('auth')->group(function () {
 
 Route::middleware(['auth'])->group(function () {
     Route::resource('products', ProductController::class);
+});
+
+Route::middleware(['auth'])->group(function () {
+    Route::resource('aboutus', AboutusController::class);
 });
 
 require __DIR__.'/auth.php';
