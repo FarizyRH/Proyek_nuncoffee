@@ -12,7 +12,8 @@ class Feedback extends Model
      protected $fillable = [
         'nama',
         'email',
-        'pesan', // Tambahkan kolom 'pesan'
+        'pesan',
+        'user_id',
     ];
 
     public function user(): BelongsTo
