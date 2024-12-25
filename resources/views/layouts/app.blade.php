@@ -32,7 +32,7 @@
 
         <!-- Scripts -->
         @vite(['resources/css/app.css', 'resources/js/app.js'])
-        <script src="https://cdn.ckeditor.com/ckeditor5/35.0.1/classic/ckeditor.js"></script>
+
     </head>
     <body class="font-sans antialiased">
         <div id="app" class="bg-gray-100">

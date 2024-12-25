@@ -4,6 +4,10 @@ namespace App\Http\Controllers;
 
 use App\Models\Testimoni;
 use Illuminate\Http\Request;
+use App\Http\Controllers\Controller;
+use Illuminate\Support\Facades\Auth;
+use Illuminate\Support\Facades\Storage;
+
 
 class TestimoniController extends Controller
 {
@@ -12,8 +16,8 @@ class TestimoniController extends Controller
      */
     public function index()
     {
-        $testimoni = Testimoni::all();
-        return view ('testimoni.index', compact('testimoni'));
+       $testimoni = Testimoni::all();
+       return view('testimoni.index', compact('testimoni'));
     }
 
     /**
@@ -30,22 +34,23 @@ class TestimoniController extends Controller
     public function store(Request $request)
     {
         $request->validate([
-            'nama'=>'required|string|max:255',
-            'isi_testimoni'=>'required|string|max:255',
-            'gambar'=>'nullable|image|mimes:jpg,jpeg,png|max:2048',
-       ]);
+            'nama'=> 'required|string|max:255',
+            'isi'=> 'required|string|max:255',
+            'gambar'=> 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
 
-       $testimoni=new Testimoni();
-       $testimoni->nama = $request->nama;
-       $testimoni->isi_testimoni = $request->isi_testimoni;
+        $testimoni = new Testimoni();
+        $testimoni->nama = $request->nama;
+        $testimoni->isi = $request->isi;
+        $testimoni->user_id = Auth::id(); // Ambil ID user yang login
 
-       if ($request->hasFile('gambar')){
-            $testimoni->gambar = $request->file('gambar')->store('images', 'public');
-       }
+        if ($request->hasFile('gambar')){
+            $testimoni->gambar = $request->file('gambar')->store('images','public');
+        };
 
-       $testimoni->save();
-       return redirect()-> route('testimoni.index')->with('success',
-        'Testimoni berhasil ditambahkan!');
+        $testimoni->save();
+        return redirect()->route('testimoni.index')->with('succes', 'Testimoni berhasil ditambahkan!');
+
     }
 
     /**
@@ -61,7 +66,7 @@ class TestimoniController extends Controller
      */
     public function edit(Testimoni $testimoni)
     {
-        return view('testimoni.edit',compact('testimoni'));
+        return view('testimoni.edit', compact('testimoni'));
     }
 
     /**
@@ -69,27 +74,30 @@ class TestimoniController extends Controller
      */
     public function update(Request $request, Testimoni $testimoni)
     {
-        $request->validate([
-            'nama'=>'required|string|max:255',
-            'isi_testimoni'=>'required|string|max:255',
-            'gambar'=>'nullable|image|mimes:jpg,jpeg,png|max:2048',
-        ]);
-
-        $testimoni->nama = $request->nama;
-        $testimoni->isi_testimoni = $request->isi_testimoni;
-
-        // Periksa jika ada file gambar baru
-        if ($request->hasFile('gambar')) {
-            // Hapus gambar lama jika ada
-            if ($testimoni->gambar) {
-                Storage::delete('public/' . $testimoni->gambar);
-            }
-            // Simpan gambar baru
-            $testimoni->gambar = $request->file('gambar')->store('images', 'public');
+        // Pastikan hanya user yang membuat testimoni yang bisa mengeditnya
+        if ($testimoni->user_id !== Auth::id()) {
+            abort(403, 'Anda tidak diizinkan mengedit testimoni ini.');
         }
 
+        $request->validate([
+            'nama'=> 'required|string|max:255',
+            'isi'=> 'required|string|max:255',
+            'gambar'=> 'nullable|image|mimes:jpg,jpeg,png|max:2048',
+        ]);
+
+        $testimoni -> nama= $request->nama;
+        $testimoni ->isi= $request->isi;
+
+        if ($request->hasFile('gambar')){
+            if($testimoni->gambar){
+                Storage::delete('public/'.$testimoni->gambar);
+            }
+            $testimoni->gambar = $request->file('gambar')->store('images','public');
+        };
+
         $testimoni->save();
-        return redirect()->route('testimoni.index')->with('success', 'Testimoni berhasil diperbarui!');
+        return redirect()->route('testimoni.index')->with('succes', 'Testimoni berhasil diperbarui!');
+
     }
 
     /**
@@ -97,11 +105,16 @@ class TestimoniController extends Controller
      */
     public function destroy(Testimoni $testimoni)
     {
-        if ($testimoni->gambar){
-            Storage::delete ('public/'.$testimoni->gambar);
+        // Pastikan hanya user yang membuat testimoni yang bisa menghapusnya
+        if ($testimoni->user_id !== Auth::id() && Auth::user()->role !== 'admin') {
+            abort(403, 'Anda tidak diizinkan menghapus testimoni ini.');
+        }
+
+        if($testimoni->gambar){
+            Storage::delete('public/'.$testimoni->gambar);
         }
         $testimoni->delete();
-        return redirect()-> route('testimoni.index')->with('success',
-        'Testimoni berhasil dihapus!');
+        return redirect()->route('testimoni.index')->with('succes', 'Testimoni berhasil dihapus!');
+
     }
 }

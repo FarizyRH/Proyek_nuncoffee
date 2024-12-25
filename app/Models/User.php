@@ -68,7 +68,7 @@ class User extends Authenticatable
         return $this->hasMany(Feedback::class); // Relasi one-to-many
     }
 
-    
+
     // public function feedback(): HasMany
     // {
     //     return $this->hasMany(Feedback::class);

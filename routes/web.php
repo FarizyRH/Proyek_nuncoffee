@@ -29,8 +29,9 @@ Route::middleware(['auth', 'second'])->group(function () {
 
 });
 
-Route::resource('testimoni', TestimoniController::class);
-Route::apiResource('api/testimoni', TestimoniController::class);
+Route::middleware('auth')->group(function () {
+    Route::resource('testimoni', TestimoniController::class);
+});
 
 Route::get('/feedback', function () {
     $role = auth()->user()->role;

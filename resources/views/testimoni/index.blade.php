@@ -3,37 +3,85 @@
 @section('title','Landing Page')
 
 @section('content')
-    <div class="max-w-4xl mx-auto py-6">
-    <h1 class="text-2xl font-bold mb-4">Daftar Testimoni</h1>
-        @if (session('successs'))
-            <div class="bg-green-500 text-white p-3 mb-4">
-                {{ session('successs') }}
-            </div>
-        @endif
+<div class="max-w-7xl mx-auto p-4">
+    <!-- Button to add testimonial -->
+    <div class="mb-6 flex justify-between items-center">
+        <h2 class="text-3xl font-semibold text-gray-800">Apa Kata Mereka: Testimoni dari Pengguna Setia Kami</h2>
+    </div>
 
-        <a href="{{ route('testimoni.create') }}" class="inline-block bg-blue-500 text-white px-4 py-2 rounded mb-4">
-            Tambah Testimoni
-        </a> <!-- Tombol untuk menambah testimoni -->
+    <a href="{{ route('testimoni.create') }}" class="inline-flex items-center px-3 py-1.5 bg-orange-600 text-black text-base font-medium rounded-full shadow-lg hover:bg-orange-700 focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-green-500 transition-transform transform hover:scale-105">
+        <!-- Icon Add -->
+        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M12 4v16m8-8H4" />
+        </svg>
+        Tambah Testimoni
+    </a>
 
-        <div class="grid grid-cols-1 sm:grid-cols-2 lg:grid-cols-3 gap-4">
-            @foreach ($testimoni as $item)
-                <div class="bg-white shadow-md rounded-lg overflow-hidden">
-                    <img src="{{ Storage::url($item->gambar) }}" class="w-full h-48 object-cover" alt="Gambar Testimoni" />
-                    <div class="p-4">
-                        <h2 class="text-lg font-bold">{{ $item->nama }}</h2>
-                        <p class="text-gray-600 mt-2">{{ Str::limit($item->isi_testimoni, 100) }}</p>
-                        <div class="mt-4">
-                            <a href="{{ route('testimoni.edit', $item->id) }}" class="text-blue-500 hover:underline">Edit</a>
 
-                            <form action="{{ route('testimoni.destroy', $item->id) }}" method="POST" class="inline">
-                                @csrf
-                                @method('DELETE')
-                                <button type="submit" class="text-red-500 hover:underline ml-2">Hapus</button> <!-- Tombol untuk hapus testimoni -->
-                            </form>
+    <!-- Display success message if available -->
+    @if (session('success'))
+    <div class="alert alert-success mb-6 p-5 bg-green-100 text-green-700 rounded-md shadow-lg">
+        {{ session('success') }}
+    </div>
+    @endif
+
+    <!-- Testimonials displayed in a grid -->
+    <div class="mb-5">
+        {{-- <h2 class="text-2xl font-semibold text-gray-800">Testimoni Kami:</h2> --}}
+        <div class="mt-6 grid grid-cols-1 sm:grid-cols-2 md:grid-cols-3 lg:grid-cols-3 gap-6">
+            @forelse ($testimoni as $testi)
+                <div class="bg-white p-4 rounded-xl shadow-lg hover:shadow-xl border border-gray-200 transition-all">
+                    <h3 class="text-xl font-semibold text-gray-800">
+                        {{ $testi->nama }}
+                    </h3>
+                    <p class="text-sm text-gray-500 mb-2">
+                        {{ $testi->user?->name ?? 'Tidak diketahui' }}
+                    </p>
+                    <p class="text-gray-700">
+                        "{{ htmlspecialchars($testi->isi) }}"
+                    </p>
+
+                    <!-- Display the image if available -->
+                    @if ($testi->gambar)
+                        <div class="mt-3">
+                            <img src="{{ Storage::url($testi->gambar) }}" alt="Gambar Testimoni" class="w-28 h-28 object-cover retangle-full shadow-md border-2 border-gray-100 mx-auto">
                         </div>
-                    </div>
+                    @endif
+
+                    <!-- Check if the current user is the one who created the testimonial or is an admin -->
+                    @if (Auth::user()->id == $testi->user_id || Auth::user()->role == 'admin')
+                        <div class="flex space-x-3 mt-4">
+                            <!-- Show Edit button if the current user is the creator -->
+                            @if (Auth::user()->id == $testi->user_id)
+                                <a href="{{ route('testimoni.edit', $testi->id) }}" class="inline-flex items-center px-4 py-2 bg-blue-500 text-white text-sm font-medium rounded-md shadow-md hover:bg-blue-600 transition-transform transform hover:scale-105">
+                                    <!-- Icon Pencil -->
+                                    <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                        <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M19 7l-7 7-7-7" />
+                                    </svg>Edit
+                                </a>
+                            @endif
+
+                            <!-- Show Delete button for both the creator or admin -->
+                            @if (Auth::user()->role == 'admin' || Auth::user()->id == $testi->user_id)
+                                <form action="{{ route('testimoni.destroy', $testi->id) }}" method="POST" onsubmit="return confirm('Apakah Anda yakin ingin menghapus testimoni ini?');" style="display:inline;">
+                                    @csrf
+                                    @method('DELETE')
+                                    <button type="submit" class="inline-flex items-center px-4 py-2 bg-red-500 text-white text-sm font-medium rounded-md shadow-md hover:bg-red-600 transition-transform transform hover:scale-105">
+                                        <!-- Icon Trash -->
+                                        <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5 mr-2" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                                            <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M11 5h2M7 7h10l-1 14H8L7 7z" />
+                                        </svg>Delete
+                                    </button>
+                                </form>
+                            @endif
+                        </div>
+                    @endif
                 </div>
-            @endforeach
+            @empty
+                <p class="text-gray-500">Belum ada testimoni yang tersedia.</p>
+            @endforelse
         </div>
     </div>
-  @endsection
+
+</div>
+@endsection

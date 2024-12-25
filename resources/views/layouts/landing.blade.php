@@ -62,6 +62,7 @@
     <!-- Template Styles -->
     <link rel="stylesheet" href="{{ asset('01-html-file/assets/css/style.css') }}" type="text/css">
     <link rel="stylesheet" href="{{ asset('01-html-file/assets/css/responsive.css') }}" type="text/css">
+    
 </head>
 
 <body class="custom-cursor">

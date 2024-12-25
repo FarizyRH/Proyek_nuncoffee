@@ -25,8 +25,8 @@
                         <p class="text-sm text-gray-500">
                             {{ $feedback->user->name }} - {{ $feedback->created_at->format('F j, Y') }}
                         </p>
-                        <p class="mt-2 text-gray-700">
-                            {{ $feedback->pesan }}
+                        <p class="mt-2 text-gray-700 mb-3">
+                            "{{ $feedback->pesan }}"
                         </p>
 
                         @if (auth()->user()->id === $feedback->user_id)
