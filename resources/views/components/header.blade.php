@@ -48,33 +48,6 @@
                             </div>
                         </li>
                     </ul>
-
-                    <div class="main-header-one__top-right">
-                        <div class="main-header__language-switcher">
-                            <div class="icon">
-                                <span class="icon-globe"></span>
-                            </div>
-
-                            <div class="language-switcher clearfix">
-                                <form action="#" class="clearfix">
-                                    <div class="select-box clearfix">
-                                        <select class="selectmenu wide">
-                                            <option selected="selected">English</option>
-                                            <option>France</option>
-                                            <option>Germany</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="header-style1__social-links">
-                            <a href="#"><i class="icon-facebook-app-symbol"></i></a>
-                            <a href="#"><i class="icon-twitter1"></i></a>
-                            <a href="#"><i class="icon-linkedin-big-logo"></i></a>
-                            <a href="#"><i class="icon-instagram"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -98,7 +71,7 @@
                                     <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                     <ul class="main-menu__list">
                                         <li>
-                                            <a href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</a>
+                                            <a href="{{route('dashboard')}}" :active="request()->routeIs('dashboard')">Dashboard</a>
                                         </li>
                                         <li>
                                             <a href="route('products')" :active="request()->routeIs('products')">Product</a>
@@ -123,11 +96,12 @@
                                                 @auth
                                                     <li><a href="{{ route('profile.edit') }}">Profile</a></li>
                                                     <li>
-                                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                                        <a href="#" onclick="event.preventDefault(); document.getElementById('logout-form').submit();">
+                                                            Logout
+                                                        </a>
+
+                                                        <form id="logout-form" action="{{ route('logout') }}" method="POST" style="display: none;">
                                                             @csrf
-                                                            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">
-                                                                Logout
-                                                            </button>
                                                         </form>
                                                     </li>
                                                 @else
