@@ -4,5 +4,4 @@
 
 @section('content')
     @include('components.galeri')
-    @include('components.galeri')
 @endsection

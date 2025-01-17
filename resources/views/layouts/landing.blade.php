@@ -5,7 +5,6 @@
     @vite(['resources/css/app.css', 'resources/js/app.js'])
     <meta charset="UTF-8" />
     <meta name="viewport" content="width=device-width, initial-scale=1.0" />
-    {{-- <title> Blog Grid || Billdins || Billdins HTML 5 Template </title> --}}
     <!-- favicons Icons -->
     <link rel="apple-touch-icon" sizes="180x180" href="{{ asset('01-html-file/assets/images/favicons/apple-touch-icon.png')}}" />
     <link rel="icon" type="image/png" sizes="32x32" href="{{ asset('01-html-file/assets/images/favicons/favicon-32x32.png')}}" />

@@ -45,8 +45,5 @@ class User extends Authenticatable
             'password' => 'hashed',
         ];
     }
-    public function qnas()
-    {
-        return $this->hasMany(QnA::class);
-    }
+    
 }
