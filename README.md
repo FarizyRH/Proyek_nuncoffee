@@ -54,6 +54,7 @@ Untuk Adminnya, berikut fitur utamanya:
 Sistem Informasi Nun Coffe adalah sebuah sistem informasi yang diaplikasikan pada website. Terdapat 2 jenis aktor yaitu admin dan pengunjung. Pengolahan data dilakukan oleh admin pada website dan pengunjung hanya melihat informasi pada website.
 
 **2.1.1 Antarmuka Sistem**
+
 ![alt text]()
 
 Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin mempunyai fungsi mengelola data dan pengunjung bisa melihat informasi serta memberikan komentar.
@@ -83,6 +84,7 @@ Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin me
 
 
 **2.1.3 Antarmuka Perangkat Keras**
+
 ![alt text]()
 
 Antarmuka perangkat keras yang digunakan untuk mengoperasikan perangkat lunak Nun coffe antara lain: 
@@ -118,20 +120,19 @@ Tidak ada
 | Simpan | Diguankan untuk menyimpan data |
 
 
-**2.1.8 Kebutuhan Adaptasi*
-
-Tidak ada
 
 
-## 2.2 Spesifikasi Kebutuhan Fungsional
+### 2.2 Spesifikasi Kebutuhan Fungsional
 ![alt text]()
 
-**2.2.1 Admin Login*
+**2.2.1 Admin Login**
 
 Use Case: Login
 
 Diagram:
+
 ![alt text]()
+
 Deskripsi Singkat Admin melakukan login terlebih dahulu sebelum masuk ke tampilan home admin.
 
 Deskripsi Langkah-Langkah
@@ -142,12 +143,14 @@ Deskripsi Langkah-Langkah
 4. Bila gagal sistem akan menampilkan peringatan.
 
 
-**2.2.2 Admin Input data Galeri*
+**2.2.2 Admin Input data Galeri**
 
 Use Case: Input data Galeri
 
 Diagram:
+
 ![alt text]()
+
 Deskripsi Singkat Admin menginputkan data galeri dengan menambahkan judul dan gambar.
 
 Deskripsi Langkah-Langkah
@@ -155,148 +158,105 @@ Deskripsi Langkah-Langkah
 1. Sistem akan menampilkan tampilan inputan galeri.
 2. Admin dapat melihat, menambahkan dan mengedit galeri
 3. Sistem akan menyimpan ke database.
-4. Jika sudah disimpan sistem akan menampilkan data.
+4. Jika sudah disimpan sistem akan menampilkan data yang sudah disimpan.
 
-## Ringkasan
-Dokumen ini berisi desain dan gambaran produk yang akan dibuat. Terdiri dari semua informasi yang dikelola hingga dapat membuat sebuah program. Program diharapkan dapat berjalan sesuai dengan kebutuhan user, dengan melakukan interview sebagai sumber informasi pembuatannya. Informasi yang ada pada dokumen ini:
 
-1. **Pendahuluan**  
-   - Deskripsi, tujuan, dan tim proyek
-2. **System Request**  
-   - Proyek Sponsor, Business Need, Business Requirement, Business Value, Special Issue/Constraints
-3. **Kegiatan Requirement System**  
-   - Hasil Kegiatan Wawancara dan Observasi
-4. **Kebutuhan Pengguna (User Requirement)**  
-   - Hal-hal yang akan dikerjakan oleh sistem
-5. **Kebutuhan Sistem (System Requirement)**  
-   - Kebutuhan fungsional dan kebutuhan non-fungsional
+**2.2.3 Admin Input data Product**
 
-Dengan dokumen ini sebagai pedoman, program diharapkan dapat berjalan dan selesai tepat waktu.
+Use Case: Input Data Product
 
----
+Diagram:
 
-## Daftar Isi
-- Ringkasan
-- Pendahuluan
-  - Deskripsi Proyek
-  - Tujuan Proyek
-  - Tim Proyek
-- System Request
-- Kegiatan Requirement System
-  - Hasil Kegiatan Wawancara
-- Kebutuhan Pengguna (User Requirement)
-- Kebutuhan Sistem (System Requirement)
-  - Kebutuhan Fungsional
-  - Kebutuhan Non-Fungsional
+![alt text]() 
 
----
+Deskripsi singkat admin dapat menampilkan halaman input product dan menambahkan product sesuai kategorinya.
 
-## Pendahuluan
-### Deskripsi Proyek
-Di era digital yang terus berkembang, memiliki kehadiran online merupakan kebutuhan penting bagi UMKM agar dapat bersaing dan menjangkau lebih banyak konsumen. Website menjadi sarana informasi sekaligus platform interaksi langsung dengan pelanggan.
+Deskripsi Langkah-langkah:
 
-Proyek ini bertujuan untuk membantu UMKM kafe meningkatkan visibilitas dan aksesibilitas mereka melalui pembuatan website yang profesional menggunakan framework Laravel. Dengan fitur seperti menu, peta lokasi, dan kontak pelanggan, diharapkan pengalaman pelanggan meningkat dan bisnis berkembang.
+1. Sistem akan menampilkan tampilan product.
+2. Admin dapat menambahkan, menghapus dan mengedit product.
+3. Sistem akan menyimpan ke database.
+4. Jika sudah disimpan sistem akan menampilkan data yang sudah disimpan.
 
-### Tujuan Proyek
-Membuat website untuk UMKM menggunakan Laravel, meningkatkan visibilitas dan aksesibilitas UMKM di dunia digital. Proyek ini juga merupakan tugas semester dari mata kuliah **BPF 1 (Bengkel Pemrograman Framework 1).**
 
-### Tim Proyek
-- Farizy Rahman Hidayat  
-- Sekar Mutiara Mufthi  
-- Umar Shahab
+**2.2.4 Admin Input data About us**
 
----
+Use Case: Input Data About us
 
-## System Request
-### System Request: Pembuatan Website UMKM Papi Caffe Menggunakan Framework Laravel
+Diagram:
 
-#### Business Needs:
-- Pencatatan yang memadai
-- Manajemen peralatan berdasarkan penggunaannya
-- Efisiensi penggunaan lab
-- Inventaris yang sistematis
-- Pengelompokan alat berdasarkan kategori
+![alt text]() 
 
-#### Business Requirements:
-Fitur-fitur yang harus ada:
-- Meningkatkan Kehadiran Digital
-- Meningkatkan Efisiensi Operasional
-- Peningkatan Pengalaman Pengguna (UX)
+Deskripsi singkat admin dapat Mengedit halaman about us dengan mengedit judul, isi about us dan gambar.
 
-#### Business Value:
-- Penguatan Brand dan Identitas Digital
-- Pengumpulan Data Pelanggan
-- Peningkatan Layanan Pelanggan
+Deskripsi Langkah-langkah:
 
----
+1. Sistem akan menampilkan tampilan about us.
+2. Admin dapat mengedit data product.
+3. Sistem akan menyimpan ke database.
+4. Jika sudah disimpan sistem akan menampilkan data yang sudah disimpan.
 
-## Kegiatan Requirement System
-### Hasil Kegiatan Wawancara
-1. **Apakah web ini bersifat lokal domain?**
-   Website menggunakan domain lokal dengan database yang menyimpan pesan dan gambar. Fitur seperti profil usaha, blog, dan halaman pesan saran juga tersedia.
 
-2. **Web ini apakah ada massanya?**
-   Jika "massa" berarti masa berlaku, maka website menggunakan domain lokal tanpa masa berlaku spesifik. Jika "massa" berarti jumlah pengunjung, proyeksi pengunjung belum dapat dilakukan.
+**2.2.5 Pengunjung mengunjungi Website**
 
----
+Use Case: Mengunjungi website
 
-## Kebutuhan Pengguna (User Requirement)
-### 1. Pelanggan Kafe
-**Kebutuhan:**
-- Melihat Menu: Informasi produk, harga, dan ketersediaan menu.
-- Mencari Lokasi dan Jam Operasional: Alamat, jam operasional, dan peta.
-- Berinteraksi dengan Kafe: Halaman kontak atau chat support.
-- Mengakses dari Berbagai Perangkat: Responsif di smartphone, tablet, dan desktop.
-- Melihat Promosi: Informasi promosi, event, atau penawaran khusus.
+Diagram:
 
-### 2. Pemilik/Manajemen Kafe
-**Kebutuhan:**
-- Menyimpan Data Pelanggan: Untuk strategi pemasaran dan retensi.
-- Mengelola Konten Website: Jam operasional, lokasi, dan deskripsi bisnis.
-- Melihat Feedback Pelanggan: Umpan balik/review dari pelanggan.
-- Mengatur Promosi: Membuat dan mempublikasikan promosi.
+![alt text]() 
 
-### 3. Administrator Website
-**Kebutuhan:**
-- Mengelola Akun Pengguna: Tambah, edit, atau hapus akun pengguna.
-- Keamanan dan Backup Data: Backup berkala dan keamanan data.
-- Pemeliharaan Sistem: Memantau performa website dan perbaikan teknis.
+Deskripsi singkat Pengunjung mengunjungi website dan melihat informasi tentang cafe yang ada di website seperti, jam operasional, lokasi, menu product, feedback dan testimoni dari pelanggan yang datang. Pengunjung juga dapat memberikan komentar di halaman feed back dan testimoni terkait cafe dan productnya.
 
----
+Deskripsi Langkah-langkah:
 
-## Kebutuhan Sistem (System Requirement)
-### Kebutuhan Fungsional
-| **No** | **Proses Berjalan (as-is)**                     | **Sistem yang Akan Dibuat (to-be)**            |
-|--------|---------------------------------------------|-----------------------------------------------|
-| 1      | Melihat promo pada saat di toko             | Melihat promo yang ada di website             |
-| 2      | Melihat menu yang tersedia sebelum ke kafe | Melihat menu yang disajikan melalui web       |
-| 3      | Mengetahui stok menu makanan/minuman      | Melihat jumlah stok pada menu tertentu        |
-| 4      | Mengetahui jam operasional kafe           | Melihat jam operasional melalui website       |
+1. Sistem akan menampilkan halaman-halaman konten.
+2. Pengunjung melihat informasi yang ada pada website seperti informasi tentang cafe atau menu-menu yang ada di cafe dan lokasi cafe serta juga dapat memberikan komentar tentang cafe di halaman feedback dan komentar tentang  makanan dan minumannya di halaman testimoni.
+3. Pengunjung juga dapat mengedit feedback dan testimoni milik mereka yang telah mereka buat.
 
----
 
-### Use Case
-**Pertanyaan untuk Pengunjung:**
-1. Bagaimana cara pengunjung melihat profil usaha di website?
-   - Melalui navbar yang bertuliskan profil usaha.
-2. Apa yang terjadi setelah pengunjung mengirim pesan/saran melalui form kontak?
-   - Muncul pop-up "Terima Kasih" dan halaman berpindah ke promo.
-3. Apakah pengunjung bisa melihat riwayat pesan/saran?
-   - Bisa.
-4. Bagaimana pengunjung tahu pesan/saran mereka diterima?
-   - Ada pop-up "Pesan dan Saran sudah terkirim".
 
-**Pertanyaan untuk Admin:**
-1. Bagaimana admin membuat artikel blog baru?
-   - Melalui halaman blog di dashboard.
-2. Apa yang terjadi jika admin mengedit artikel blog?
-   - Artikel diperbarui secara otomatis.
-3. Bagaimana admin meninjau pesan/saran dari pengunjung?
-   - Melalui menu "pesan saran" di navbar.
-4. Apakah admin bisa membalas pesan melalui platform ini?
-   - Tidak.
+# Pembagian  tugas
+**Laporan**
 
----
+BAB 1 -> sekar
 
-## Site Map
-(Sertakan diagram site map jika diperlukan)
+BAB 2 - 2.1 -> umar
+
+2.1.1 -> umar
+
+2.1.2 -> farizy
+
+2.1.3 -> umar
+
+2.1.4 -> sekar
+
+2.1.5 -> sekar
+
+2.1.6 -> sekar
+
+2.1.7 -> sekar
+
+2.2 -> umar
+
+
+
+**Sistem**
+
+Dashboard -> farizy
+
+Login -> farizy
+
+Register -> farizy
+
+Galeri -> farizy
+
+About Us -> umar
+
+Product -> umar
+
+Feedback -> sekar
+
+Testimoni -> sekar
+
+Akun ->
+
