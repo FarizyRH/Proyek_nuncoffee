@@ -48,33 +48,6 @@
                             </div>
                         </li>
                     </ul>
-
-                    <div class="main-header-one__top-right">
-                        <div class="main-header__language-switcher">
-                            <div class="icon">
-                                <span class="icon-globe"></span>
-                            </div>
-
-                            <div class="language-switcher clearfix">
-                                <form action="#" class="clearfix">
-                                    <div class="select-box clearfix">
-                                        <select class="selectmenu wide">
-                                            <option selected="selected">English</option>
-                                            <option>France</option>
-                                            <option>Germany</option>
-                                            <option>Bangladesh</option>
-                                        </select>
-                                    </div>
-                                </form>
-                            </div>
-                        </div>
-                        <div class="header-style1__social-links">
-                            <a href="#"><i class="icon-facebook-app-symbol"></i></a>
-                            <a href="#"><i class="icon-twitter1"></i></a>
-                            <a href="#"><i class="icon-linkedin-big-logo"></i></a>
-                            <a href="#"><i class="icon-instagram"></i></a>
-                        </div>
-                    </div>
                 </div>
             </div>
         </div>
@@ -105,7 +78,7 @@
                                             <a href="route('products')" :active="request()->routeIs('products')">Product</a>
                                         </li>
                                         <li>
-                                            <a href="route('aboutus')" :active="request()->routeIs('abooutus')">AboutUs</a>
+                                            <a href="route('aboutus')" :active="request()->routeIs('abooutus')">About Us</a>
                                         </li>
                                         <li>
                                             <a href="{{ route('feedback.index') }}" :active="request()->routeIs('feedback.index')">Feedback</a>
@@ -114,35 +87,42 @@
                                             <a href="{{ route('testimoni.index') }}" :active="request()->routeIs('testimoni.index')">Testimoni</a>
                                         </li>
 
+                                        <li class="dropdown">
+                                            <div class="icon">
+                                                <span class="icon"></span>
+                                            </div>
+                                            <a class="" href="#">
+                                                {{ Auth::check() ? Auth::user()->name : 'Login' }}
+                                            </a>
+                                            <ul class="shadow-box">
+                                                @auth
+                                                    <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                    <li>
+                                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">
+                                                                Logout
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                @else
+                                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                                @endauth
+                                            </ul>
+
+
+                                        </li>
+
                                     </ul>
                                 </div>
                             </div>
 
                             <div class="main-header-one__bottom-right">
-                                <div class="header-search-box">
-                                    <a href="#"
-                                        class="main-menu__search search-toggler icon-search-interface-symbol"></a>
-                                </div>
+                                <ul class="main-menu__list">
 
-                                <div class="main-header__shop">
-                                    <div class="icon-box">
-                                        <a href="#"><i class="icon-shopping-bag"></i>
-                                        </a>
-                                        <div class="count">
-                                            <span>0</span>
-                                        </div>
-                                    </div>
-                                </div>
+                                </ul>
 
-                                <div class="main-header__btn">
-                                    <a class="thm-btn" href="contact.html">Get a Quote
-                                        <i class="icon-next"></i>
-                                        <span class="hover-btn hover-bx"></span>
-                                        <span class="hover-btn hover-bx2"></span>
-                                        <span class="hover-btn hover-bx3"></span>
-                                        <span class="hover-btn hover-bx4"></span>
-                                    </a>
-                                </div>
                             </div>
                         </div>
                     </div>

@@ -28,12 +28,10 @@
                 <a href="#" class="fab fa-twitter"></a>
                 <a href="#" class="fab fa-facebook-square"></a>
                 <a href="#" class="fab fa-pinterest-p"></a>
-                <a href="#" class="fab fa-instagram"></a>
+                <a href="https://www.instagram.com/nuncoffee.co?igsh=MWkwNzhyN2FqM3k0dw==" class="fab fa-instagram"></a>
             </div>
         </div>
     </div>
-
-
 </div>
 
 
@@ -47,141 +45,59 @@
                 <div class="site-footer__logo">
                     <a href="index.html"><img src="{{ asset('01-html-file/assets/images/logo/2.png') }}" class="h-[75px] w-[100px]"></a>
                 </div>
-
-
-
-
             </div>
         </div>
 
-<div class="site-footer">
-    <div class="site-footer__top-inner">
-<div class="container">
-            <div class="row">
-
-
-
-
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated animated animated animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
-                    <div class="footer-widget__single footer-widget__contact">
-                        <div class="title-box">
-                            <h2>Contact Us</h2>
-                            <div class="line"></div>
-                        </div>
-
-                        <ul class="footer-widget__contact-list">
-                            <li>
-                                <div class="icon-box">
-                                    <span class="icon-maps-and-flags"></span>
+        <div class="site-footer">
+            <div class="site-footer__top-inner">
+                <div class="container">
+                    <div class="row">
+                        <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated animated animated animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+                            <div class="footer-widget__single footer-widget__contact">
+                                <div class="title-box">
+                                    <h2>Contact Us</h2>
+                                    <div class="line"></div>
                                 </div>
 
-                                <div class="text-box">
-                                    <p>JL. Pramuka, No.4, Lembah Sari<br> Rumbai, Pekanbaru</p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="icon-box">
-                                    <span class="icon-telephone-call"></span>
-                                </div>
-
-                                <div class="text-box">
-                                    <p><a href="tel:1234567890">+517 845 74589</a></p>
-                                    <p><a href="tel:1234567890">+517 845 74589</a></p>
-                                </div>
-                            </li>
-
-                            <li>
-                                <div class="icon-box">
-                                    <span class="icon-email"></span>
-                                </div>
-
-                                <div class="text-box">
-                                    <p><a href="mailto:yourmail@email.com">nuncoffe@gmail.com</a></p>
-                                </div>
-                            </li>
-                        </ul>
-                    </div>
-                </div>
-                <?php
-                session_start();
-
-                if (isset($_SESSION['user_role']) && ($_SESSION['user_role'] == 'admin' || $_SESSION['user_role'] == 'super_admin')) {
-                ?>
-                <div class="col-xl-6">
-                    <div class="contact-page__form">
-                        <div class="title-box">
-                            <h2 class="" style="color: white;">Get In Touch</h2>
-                        </div>
-                        <form class="contact-form-validated contact-page__form-box" action="assets/inc/sendemail.php" method="post" novalidate="novalidate">
-                            <div class="row">
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="input-box">
-                                        <input type="text" name="name" placeholder="Name" required="" aria-required="true">
-                                        <div class="icon"><span class="icon-user"></span></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="input-box">
-                                        <input type="email" name="email" placeholder="Email" required="" aria-required="true">
-                                        <div class="icon"><span class="icon-email"></span></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="input-box">
-                                        <input type="text" name="Phone" placeholder="Phone" required="" aria-required="true">
-                                        <div class="icon"><span class="icon-telephone-call"></span></div>
-                                    </div>
-                                </div>
-                                <div class="col-xl-6 col-lg-6 col-md-6">
-                                    <div class="input-box">
-                                        <div class="select-box">
-                                            <select class="selectmenu wide" style="display: none;">
-                                                <option selected="selected">Subject</option>
-                                                <option>Freight Type 01</option>
-                                                <option>Freight Type 02</option>
-                                                <option>Freight Type 03</option>
-                                                <option>Freight Type 04</option>
-                                                <option>Freight Type 05</option>
-                                            </select><div class="nice-select selectmenu wide" tabindex="0"><span class="current">Subject</span><ul class="list"><li data-value="Subject" class="option selected">Subject</li><li data-value="Freight Type 01" class="option">Freight Type 01</li><li data-value="Freight Type 02" class="option">Freight Type 02</li><li data-value="Freight Type 03" class="option">Freight Type 03</li><li data-value="Freight Type 04" class="option">Freight Type 04</li><li data-value="Freight Type 05" class="option">Freight Type 05</li></ul></div>
+                                <ul class="footer-widget__contact-list">
+                                    <li>
+                                        <div class="icon-box">
+                                            <span class="icon-maps-and-flags"></span>
                                         </div>
-                                    </div>
-                                </div>
 
+                                        <div class="text-box">
+                                            <p>JL. Pramuka, No.4, Lembah Sari<br> Rumbai, Pekanbaru</p>
+                                        </div>
+                                    </li>
 
-                                <div class="col-xl-12">
-                                    <div class="input-box">
-                                        <textarea name="message" placeholder="Message"></textarea>
-                                        <div class="icon style2"><span class="fa fa-pencil"></span></div>
-                                    </div>
-                                </div>
+                                    <li>
+                                        <div class="icon-box">
+                                            <span class="icon-telephone-call"></span>
+                                        </div>
 
-                                <div class="col-xl-12">
-                                    <div class="contact-page__form-btn">
-                                        <button type="submit" class="thm-btn">
-                                            Submit Now
-                                            <i class="icon-next"></i>
-                                            <span class="hover-btn hover-bx"></span>
-                                            <span class="hover-btn hover-bx2"></span>
-                                            <span class="hover-btn hover-bx3"></span>
-                                            <span class="hover-btn hover-bx4"></span>
-                                        </button>
-                                    </div>
-                                </div>
+                                        <div class="text-box">
+                                            <p><a href="tel:1234567890">+517 845 74589</a></p>
+                                            <p><a href="tel:1234567890">+517 845 74589</a></p>
+                                        </div>
+                                    </li>
+
+                                    <li>
+                                        <div class="icon-box">
+                                            <span class="icon-email"></span>
+                                        </div>
+
+                                        <div class="text-box">
+                                            <p><a href="mailto:yourmail@email.com">nuncoffe@gmail.com</a></p>
+                                        </div>
+                                    </li>
+                                </ul>
                             </div>
-                        </form>
-                        <div class="result"></div>
+                        </div>
+
                     </div>
                 </div>
-                <?php
-                    }
-                ?>
             </div>
         </div>
-</div>
-
-</div>
-
     </div>
     <!--End Site Footer Top-->
 

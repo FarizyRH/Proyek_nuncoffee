@@ -15,7 +15,7 @@
 
         <!-- Feedback Section -->
         <div class="mb-8">
-            <h2 class="text-xl font-semibold text-gray-800">Kolaborasi Sukses Kami:</h2>
+            {{-- <h2 class="text-xl font-semibold text-gray-800">Kolaborasi Sukses Kami:</h2> --}}
             <div class="mt-4 grid grid-cols-1 md:grid-cols-2 lg:grid-cols-3 gap-6">
                 @foreach ($feedbacks as $feedback)
                     <div class="bg-white p-6 rounded-lg shadow-lg border border-gray-200">
