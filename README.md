@@ -1,4 +1,4 @@
-![alt text]()
+![alt text](BerkasGambar/Sampul.png)
 
 ## BAB I Pendahuluan
 ### 1.1 Tujuan 
@@ -55,7 +55,7 @@ Sistem Informasi Nun Coffe adalah sebuah sistem informasi yang diaplikasikan pad
 
 **2.1.1 Antarmuka Sistem**
 
-![alt text]()
+![alt text](BerkasGambar/usercase)
 
 Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin mempunyai fungsi mengelola data dan pengunjung bisa melihat informasi serta memberikan komentar.
 
@@ -64,23 +64,23 @@ Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin me
 **Halaman Admin**
 |  |  |
 |--|--|
-| ![alt text]() Halaman Login admin diminta untuk mengisi username dan password.| ![alt text]() Setelah login admin akan masuk ke Dashboard admin.
+| ![alt text](BerkasGambar/login.png) Halaman Login admin diminta untuk mengisi username dan password.| ![alt text](BerkasGambar/mainadmin.png) Setelah login admin akan masuk ke Dashboard admin.
 |  |  |
-| ![alt text]() Pada Halaman Admin akan terdapat halaman untuk mengelola data product, namun tidak hanya data product tapi admin juga dapat mengelola data galeri, data about us, data feedback dan data testimoni dengan tampilan yang berbeda di halaman yang berbeda juga.| ![alt text]() Pada Halaman mengelola data product, admin juga dapat menambahkan dan mengupdate data product begitu juga dengan pengelolaan data di tabel lainnya.
+| ![alt text](BerkasGambar/produkadmin.jpg) Pada Halaman Admin akan terdapat halaman untuk mengelola data product, namun tidak hanya data product tapi admin juga dapat mengelola data galeri, data about us, data feedback dan data testimoni dengan tampilan yang berbeda di halaman yang berbeda juga.| ![alt text](BerkasGambar/editproduk.jpg) Pada Halaman mengelola data product, admin juga dapat menambahkan dan mengupdate data product begitu juga dengan pengelolaan data di tabel lainnya.
 |  |  |
-| ![alt text 1]() ![alt text 2]() Admin juga dapat menghapus data feedback dan data testimoni yang mana ketika button hapus di klik akan muncul pop up untuk memastikan admin benar-benar ingin menghapus atau tidak.
-| ![alt text]() Pada halaman mengelola data about us, admin dapat mengupdate data tersebut.| ![alt text]() Pada Halaman data galeri, admin dapat menambahkan data baru berupa judul dari image tersebut dan image, admin juga dapat mengedit dan menghapus data galeri.
+| ![alt text 1](BerkasGambar/feedbackAdmin.jpg) ![alt text 2](BerkasGambar/usertestimoni.jpg) Admin juga dapat menghapus data feedback dan data testimoni yang mana ketika button hapus di klik akan muncul pop up untuk memastikan admin benar-benar ingin menghapus atau tidak.
+| ![alt text](BerkasGambar/aboutAdmin.jpg) Pada halaman mengelola data about us, admin dapat mengupdate data tersebut.| ![alt text](BerkasGambar/editgaleri.jpg) Pada Halaman data galeri, admin dapat menambahkan data baru berupa judul dari image tersebut dan image, admin juga dapat mengedit dan menghapus data galeri.
 
 **Halaman User**
 |  |  |
 |--|--|
-| ![alt text]() Pada Halaman pengunjung terdapat dashboard yang berisi tampilan scrolling yang berisi seluruh konten seperti tampilan home, galeri, about us, product, feedback dan testimoni.| ![alt text]() Pada Halaman pengunjung terdapat Halaman galeri yang berisi gambar dan judul.
+| ![alt text](BerkasGambar/homepage.png) Pada Halaman pengunjung terdapat dashboard yang berisi tampilan scrolling yang berisi seluruh konten seperti tampilan home, galeri, about us, product, feedback dan testimoni.| ![alt text](BerkasGambar/galery.jpg) Pada Halaman pengunjung terdapat Halaman galeri yang berisi gambar dan judul.
 |  |  |
-| ![alt text]() Pada Halaman About Us terdapat judul, cerita tentang cafe, gambar dan lokasi atau map yang akan muncul ketika di klik.| ![alt text]() Di halaman product, pengunjung bisa menlihat berbagai produk mulai dari kategori coffe, noncoffe/milk dan snack. Pengunjung juga bisa mencari produk di kolom search.
+| ![alt text](BerkasGambar/aboutAdmin.jpg) Pada Halaman About Us terdapat judul, cerita tentang cafe, gambar dan lokasi atau map yang akan muncul ketika di klik.| ![alt text](BerkasGambar/produkuser.jpg) Di halaman product, pengunjung bisa menlihat berbagai produk mulai dari kategori coffe, noncoffe/milk dan snack. Pengunjung juga bisa mencari produk di kolom search.
 |  |  |
-| ![alt text]() Halaman Feedback di pengunjung, menampilkan umpan balik/review yang diberi oleh pelanggan yang telah datang ke Nun Coffe.| ![alt text]() ![alt text]() pengunjung juga bisa menambahkan feedback, mengedit dan menghapus feedback yang telah mereka buat sendiri.
+| ![alt text](BerkasGambar/feedbackuser.jpg) Halaman Feedback di pengunjung, menampilkan umpan balik/review yang diberi oleh pelanggan yang telah datang ke Nun Coffe.| ![alt text](BerkasGambar/tambahfeedbacl.jpg) ![alt text](BerkasGambar/editfeedback.jpg) pengunjung juga bisa menambahkan feedback, mengedit dan menghapus feedback yang telah mereka buat sendiri.
 |  |  |
-| ![alt text]() Di Halaman Testimoni, pengunjung dapat melihat testimoni yang di berikan oleh pelanggan cafe tersebut.| ![alt text]() ![alt text]() Pengunjung juga dapat menambah, mengedit dan menghapus data Testimoni yang mereka buat.
+| ![alt text](BerkasGambar/usertestimoni.jpg) Di Halaman Testimoni, pengunjung dapat melihat testimoni yang di berikan oleh pelanggan cafe tersebut.| ![alt text](BerkasGambar/tambahtestimoni.jpg) ![alt text](BerkasGambar/edittestimoni.jpg) Pengunjung juga dapat menambah, mengedit dan menghapus data Testimoni yang mereka buat.
 
 
 **2.1.3 Antarmuka Perangkat Keras**
@@ -258,5 +258,5 @@ Feedback -> sekar
 
 Testimoni -> sekar
 
-Akun ->
+Akun -> farizy
 
