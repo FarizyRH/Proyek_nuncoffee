@@ -57,6 +57,7 @@
                             <div class="account__form-input-box">
                                 <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
                             </div>
+                            <input type="hidden" name="role" value="user">
                             <div class="account__form-btn-box">
                                 <button type="submit" class="thm-btn account__form-btn">Register
                                     <span class="hover-btn hover-bx"></span>

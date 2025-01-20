@@ -1,18 +1,34 @@
 <?php
 
 namespace App\Http\Controllers;
+
 use Illuminate\Support\Facades\Storage;
 use Illuminate\Http\Request;
 use App\Models\Galeri;
+use Illuminate\Support\Facades\Auth;
 
 class GaleriController extends Controller
 {
     // Menampilkan semua galeri
     public function index()
     {
-        $galeris = Galeri::all();
-        return view('galeri.index', compact('galeris'));
+        $items = Galeri::all();
+
+    // Cek apakah pengguna sudah login
+        if (!Auth::check()) {
+        // Jika belum login, tampilkan galeri tanpa akses admin
+            return view('galeri', compact('items'));  // Tampilan untuk yang belum login
     }
+
+    // Cek apakah pengguna adalah admin
+    $user = Auth::user();
+    if ($user->role === 'admin') {
+        // Jika pengguna adalah admin, tampilkan galeri dengan tampilan admin
+        return view('galeri.index', compact('items'));  // Tampilan untuk admin
+    }
+
+    // Jika pengguna bukan admin, tampilkan galeri biasa
+    return view('galeri', compact('items'));    }
 
     // Menampilkan form tambah galeri
     public function create()
@@ -35,9 +51,10 @@ class GaleriController extends Controller
         Galeri::create([
             'title' => $request->title,
             'image' => $imagePath,
+            'timespan' => now(), // Set waktu saat data dibuat
         ]);
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil ditambahkan!');
+        return redirect()->route('galeriControl.index')->with('success', 'Galeri berhasil ditambahkan!');
     }
 
     // Menampilkan form edit galeri
@@ -59,28 +76,35 @@ class GaleriController extends Controller
 
         // Update gambar jika ada
         if ($request->hasFile('image')) {
+            // Hapus gambar lama dari storage
+            if (Storage::exists('public/' . $galeri->image)) {
+                Storage::delete('public/' . $galeri->image);
+            }
+
             $imagePath = $request->file('image')->store('galeri', 'public');
             $galeri->image = $imagePath;
         }
 
+        // Update data lainnya
         $galeri->title = $request->title;
+        $galeri->timespan = now(); // Update waktu terakhir diperbarui
         $galeri->save();
 
-        return redirect()->route('galeri.index')->with('success', 'Galeri berhasil diperbarui!');
+        return redirect()->route('galeriControl.index')->with('success', 'Galeri berhasil diperbarui!');
     }
 
     // Menghapus galeri
     public function destroy($id)
-{
-    $galeri = Galeri::findOrFail($id);
+    {
+        $galeri = Galeri::findOrFail($id);
 
-    // Hapus file gambar dari storage
-    if (Storage::exists('public/' . $galeri->image)) {
-        Storage::delete('public/' . $galeri->image);
+        // Hapus file gambar dari storage
+        if (Storage::exists('public/' . $galeri->image)) {
+            Storage::delete('public/' . $galeri->image);
+        }
+
+        $galeri->delete();
+
+        return redirect()->route('galeriControl.index')->with('success', 'Galeri berhasil dihapus!');
     }
-
-    $galeri->delete();
-
-    return redirect()->route('galeri.index')->with('success', 'Galeri berhasil dihapus!');
-}
 }

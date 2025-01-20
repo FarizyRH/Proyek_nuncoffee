@@ -61,7 +61,7 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-header-one__bottom-left">
                                 <div class="logo-one">
-                                    <a href="index.html"><img src="{{ asset('01-html-file/assets/images/logo/2.png') }}" class="h-[75px] w-[100px]">
+                                    <a href=""><img src="{{ asset('01-html-file/assets/images/logo/2.png') }}" class="h-[75px] w-[100px]">
                                     </a>
                                 </div>
                             </div>
@@ -71,19 +71,27 @@
                                     <a href="#" class="mobile-nav__toggler"><i class="fa fa-bars"></i></a>
                                     <ul class="main-menu__list">
                                         <li>
-                                            <a href="{{route('dashboard')}}" :active="request()->routeIs('dashboard')">Dashboard</a>
+                                            <a href="{{ route('dashboard') }}"class="{{ request()->routeIs('dashboard') ? 'text-orange-500 font-bold border-b-2 border-orange-500' : 'text-gray-700' }}">Dashboard</a>
+
                                         </li>
                                         <li>
-                                            <a href="route('products')" :active="request()->routeIs('products')">Product</a>
+                                            <a href="{{ route('products.index') }}"class="{{ request()->routeIs('products.index') ? 'text-orange-500 font-bold border-b-2 border-orange-500' : 'text-gray-700' }}">Product</a>
+
                                         </li>
                                         <li>
-                                            <a href="route('aboutus')" :active="request()->routeIs('abooutus')">About Us</a>
+                                            <a href="{{ route('aboutus.index') }}"class="{{ request()->routeIs('aboutus.index') ? 'text-orange-500 font-bold border-b-2 border-orange-500' : 'text-gray-700' }}">About Us</a>
+
                                         </li>
                                         <li>
-                                            <a href="route('feedback')" :active="request()->routeIs('feedback')">Feedback</a>
+                                            <a href="{{ route('feedback.index') }}"class="{{ request()->routeIs('feedback.index') ? 'text-orange-500 font-bold border-b-2 border-orange-500' : 'text-gray-700' }}">Feedback</a>
+
                                         </li>
                                         <li>
-                                            <a href="{{route('galeri.index')}}" :active="request()->routeIs('galeri')">Galery</a>
+                                            <a href="{{ route('testimoni.index') }}"class="{{ request()->routeIs('testimoni.index') ? 'text-orange-500 font-bold border-b-2 border-orange-500' : 'text-gray-700' }}">Testimoni</a>
+
+                                        </li>
+                                        <li>
+                                            <a href="{{ route('galeris') }}"class="{{ request()->routeIs('galeris') ? 'text-orange-500 font-bold border-b-2 border-orange-500' : 'text-gray-700' }}">galery</a>
                                         </li>
                                         <li class="dropdown">
                                             <div class="icon">
