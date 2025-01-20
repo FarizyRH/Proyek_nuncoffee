@@ -32,10 +32,12 @@
 
         <div class="form-group">
         <select name="category" class="form-control">
-                    <option value="">Masukkan Kategori</option>
+        <option value="">Masukkan Kategori</option>
                     <option value="Coffe">Coffe</option>
+                    <option value="Hot Coffe">Hot Coffe</option>
                     <option value="Milk" >Milk</option>
                     <option value="Food" >Food</option>
+                    <option value="Snaks" >Snacks</option>
             </select>
             
         </div>

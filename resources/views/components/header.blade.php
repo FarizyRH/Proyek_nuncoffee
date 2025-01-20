@@ -102,15 +102,38 @@
                                             <a href="route('dashboard')" :active="request()->routeIs('dashboard')">Dashboard</a>
                                         </li>
                                         <li>
-                                            <a href="route('products')" :active="request()->routeIs('products')">Product</a>
+                                            <a href="{{ route('products.index') }}" :active="request()->routeIs('products')">Product</a>
                                         </li>
                                         <li>
-                                            <a href="route('aboutus')" :active="request()->routeIs('abooutus')">AboutUs</a>
+                                            <a href="{{ route('aboutus.index') }}" :active="request()->routeIs('aboutus.index')">About Us</a>
                                         </li>
                                         <li>
                                             <a href="route('feedback')" :active="request()->routeIs('feedback')">Feedback</a>
                                         </li>
-
+                                        <li class="dropdown">
+                                            <div class="icon">
+                                                <span class="icon"></span>
+                                            </div>
+                                            <a class="" href="#">
+                                                {{ Auth::check() ? Auth::user()->name : 'Login' }}
+                                            </a>
+                                            <ul class="shadow-box">
+                                                @auth
+                                                    <li><a href="{{ route('profile.edit') }}">Profile</a></li>
+                                                    <li>
+                                                        <form action="{{ route('logout') }}" method="POST" style="display: inline;">
+                                                            @csrf
+                                                            <button type="submit" style="background: none; border: none; color: inherit; cursor: pointer;">
+                                                                Logout
+                                                            </button>
+                                                        </form>
+                                                    </li>
+                                                @else
+                                                    <li><a href="{{ route('login') }}">Login</a></li>
+                                                    <li><a href="{{ route('register') }}">Register</a></li>
+                                                @endauth
+                                            </ul>
+                                        </li>
                                     </ul>
                                 </div>
                             </div>

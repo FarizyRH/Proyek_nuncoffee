@@ -1,52 +1,79 @@
-<x-guest-layout>
-    <form method="POST" action="{{ route('register') }}">
-        @csrf
+@extends('layouts.landing')
 
-        <!-- Name -->
-        <div>
-            <x-input-label for="name" :value="__('Name')" />
-            <x-text-input id="name" class="block mt-1 w-full" type="text" name="name" :value="old('name')" required autofocus autocomplete="name" />
-            <x-input-error :messages="$errors->get('name')" class="mt-2" />
+@section('title','Login Page')
+
+@section('content')
+<section class="account">
+    <div class="container">
+        <div class="account__main-tab-box tabs-box">
+            <ul class="tab-buttons clearfix list-unstyled">
+                <li data-tab="#login" class="tab-btn"><span>Login</span></li>
+                <li data-tab="#register" class="tab-btn active-btn"><span>Register</span></li>
+            </ul>
+            <div class="tabs-content">
+                <!-- Login Tab -->
+                <div class="tab" id="login">
+                    <div class="account__main-tab-inner">
+                        <form class="account__form" method="POST" action="{{ route('login') }}">
+                            @csrf
+                            <div class="account__form-input-box">
+                                <input type="text" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="account__form-input-box">
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="account__form-btn-box">
+                                <button type="submit" class="thm-btn account__form-btn">Login now
+                                    <span class="hover-btn hover-bx"></span>
+                                    <span class="hover-btn hover-bx2"></span>
+                                    <span class="hover-btn hover-bx3"></span>
+                                    <span class="hover-btn hover-bx4"></span>
+                                </button>
+                                <div class="checked-box">
+                                    <input type="checkbox" name="remember" id="remember" {{ old('remember') ? 'checked' : '' }}>
+                                    <label for="remember"><span></span>Remember me?</label>
+                                </div>
+                            </div>
+                            <div class="account__form-forgot-password">
+                                <a href="{{ route('password.request') }}">Forgot your password?</a>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+                <!-- Register Tab -->
+                <div class="tab active-tab" id="register">
+                    <div class="account__main-tab-inner">
+                        <form class="account__form" method="POST" action="{{ route('register') }}">
+                            @csrf
+                            <div class="account__form-input-box">
+                                <input type="text" name="name" placeholder="Username" required>
+                            </div>
+                            <div class="account__form-input-box">
+                                <input type="text" name="email" placeholder="Email" required>
+                            </div>
+                            <div class="account__form-input-box">
+                                <input type="password" name="password" placeholder="Password" required>
+                            </div>
+                            <div class="account__form-input-box">
+                                <input type="password" name="password_confirmation" placeholder="Confirm Password" required>
+                            </div>
+                            <div class="account__form-btn-box">
+                                <button type="submit" class="thm-btn account__form-btn">Register
+                                    <span class="hover-btn hover-bx"></span>
+                                    <span class="hover-btn hover-bx2"></span>
+                                    <span class="hover-btn hover-bx3"></span>
+                                    <span class="hover-btn hover-bx4"></span>
+                                </button>
+                                <div class="checked-box">
+                                    <input type="checkbox" name="terms" id="terms" required>
+                                    <label for="terms"><span></span>I agree to the terms and conditions</label>
+                                </div>
+                            </div>
+                        </form>
+                    </div>
+                </div>
+            </div>
         </div>
-
-        <!-- Email Address -->
-        <div class="mt-4">
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
-        </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Confirm Password -->
-        <div class="mt-4">
-            <x-input-label for="password_confirmation" :value="__('Confirm Password')" />
-
-            <x-text-input id="password_confirmation" class="block mt-1 w-full"
-                            type="password"
-                            name="password_confirmation" required autocomplete="new-password" />
-
-            <x-input-error :messages="$errors->get('password_confirmation')" class="mt-2" />
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('login') }}">
-                {{ __('Already registered?') }}
-            </a>
-
-            <x-primary-button class="ms-4">
-                {{ __('Register') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </div>
+</section>
+@endsection

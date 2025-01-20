@@ -22,6 +22,12 @@
             <textarea name="description" class="form-control" rows="4" required>{{ old('description', $aboutus->description) }}</textarea>
         </div>
 
+        <!-- Date Field -->
+        <div class="form-group">
+            <label for="date">Date</label>
+            <input type="date" name="date" class="form-control" value="{{ old('date', $aboutus->date) }}" required>
+        </div>
+
         <!-- Image Upload Section -->
         <div class="form-group">
             <label for="image">Change Images</label>

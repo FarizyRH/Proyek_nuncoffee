@@ -61,7 +61,7 @@
 
 
 
-                <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated animated animated animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
+            <div class="col-xl-3 col-lg-6 col-md-6 wow fadeInUp animated animated animated animated" data-wow-delay="300ms" style="visibility: visible; animation-delay: 300ms; animation-name: fadeInUp;">
                     <div class="footer-widget_single footer-widget_contact">
                         <div class="title-box">
                             <h2>Contact Us</h2>
@@ -75,7 +75,7 @@
                                 </div>
 
                                 <div class="text-box">
-                                    <p>2118 Thornridge Cir. Syracuse <br> Connecticut 35624</p>
+                                    <p>JL. Pramuka, No.4, Lembah Sari<br> Rumbai, Pekanbaru</p>
                                 </div>
                             </li>
 
@@ -96,12 +96,12 @@
                                 </div>
 
                                 <div class="text-box">
-                                    <p><a href="mailto:yourmail@email.com">help24/7@Billdins.com</a></p>
+                                    <p><a href="mailto:yourmail@email.com">nuncoffe@gmail.com</a></p>
                                 </div>
                             </li>
                         </ul>
                     </div>
-                </div>
+                </div>
             </div>
         </div>
 </div>

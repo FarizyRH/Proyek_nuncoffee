@@ -1,47 +1,83 @@
-<x-guest-layout>
-    <!-- Session Status -->
-    <x-auth-session-status class="mb-4" :status="session('status')" />
+@extends('layouts.landing')
 
-    <form method="POST" action="{{ route('login') }}">
-        @csrf
+@section('title', 'Login Page')
 
-        <!-- Email Address -->
-        <div>
-            <x-input-label for="email" :value="__('Email')" />
-            <x-text-input id="email" class="block mt-1 w-full" type="email" name="email" :value="old('email')" required autofocus autocomplete="username" />
-            <x-input-error :messages="$errors->get('email')" class="mt-2" />
+@section('content')
+    <section class="account">
+        <div class="container">
+            <div class="account__main-tab-box tabs-box">
+                <ul class="tab-buttons clearfix list-unstyled">
+                    <li data-tab="#login" class="tab-btn  active-btn"><span>Login</span></li>
+                    <li data-tab="#register" class="tab-btn"><span>Register</span></li>
+                </ul>
+                <div class="tabs-content">
+                    <!-- Login Tab -->
+                    <div class="tab active-tab" id="login">
+                        <div class="account__main-tab-inner">
+                            <form class="account__form" method="POST" action="{{ route('login') }}">
+                                @csrf
+                                <div class="account__form-input-box">
+                                    <input type="text" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="account__form-input-box">
+                                    <input type="password" name="password" placeholder="Password" required>
+                                </div>
+                                <div class="account__form-btn-box">
+                                    <button type="submit" class="thm-btn account__form-btn">Login now
+                                        <span class="hover-btn hover-bx"></span>
+                                        <span class="hover-btn hover-bx2"></span>
+                                        <span class="hover-btn hover-bx3"></span>
+                                        <span class="hover-btn hover-bx4"></span>
+                                    </button>
+                                    <div class="checked-box">
+                                        <input type="checkbox" name="remember" id="remember"
+                                            {{ old('remember') ? 'checked' : '' }}>
+                                        <label for="remember"><span></span>Remember me?</label>
+                                    </div>
+                                </div>
+                                <div class="account__form-forgot-password">
+                                    <a href="{{ route('password.request') }}">Forgot your password?</a>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                    <!-- Register Tab -->
+                    <div class="tab" id="register">
+                        <div class="account__main-tab-inner">
+                            <form class="account__form" method="POST" action="{{ route('register') }}">
+                                @csrf
+                                <div class="account__form-input-box">
+                                    <input type="text" name="name" placeholder="Username" required>
+                                </div>
+                                <div class="account__form-input-box">
+                                    <input type="text" name="email" placeholder="Email" required>
+                                </div>
+                                <div class="account__form-input-box">
+                                    <input type="password" name="password" placeholder="Password" required>
+                                </div>
+                                <div class="account__form-input-box">
+                                    <input type="password" name="password_confirmation" placeholder="Confirm Password"
+                                        required>
+                                </div>
+                                <div class="account__form-btn-box">
+                                    <button type="submit" class="thm-btn account__form-btn">Register
+                                        <span class="hover-btn hover-bx"></span>
+                                        <span class="hover-btn hover-bx2"></span>
+                                        <span class="hover-btn hover-bx3"></span>
+                                        <span class="hover-btn hover-bx4"></span>
+                                    </button>
+                                    <div class="checked-box">
+                                        <input type="checkbox" name="terms" id="terms" required>
+                                        <label for="terms"><span></span>I agree to the terms and conditions</label>
+                                    </div>
+                                </div>
+                            </form>
+                        </div>
+                    </div>
+
+                </div>
+            </div>
         </div>
-
-        <!-- Password -->
-        <div class="mt-4">
-            <x-input-label for="password" :value="__('Password')" />
-
-            <x-text-input id="password" class="block mt-1 w-full"
-                            type="password"
-                            name="password"
-                            required autocomplete="current-password" />
-
-            <x-input-error :messages="$errors->get('password')" class="mt-2" />
-        </div>
-
-        <!-- Remember Me -->
-        <div class="block mt-4">
-            <label for="remember_me" class="inline-flex items-center">
-                <input id="remember_me" type="checkbox" class="rounded border-gray-300 text-indigo-600 shadow-sm focus:ring-indigo-500" name="remember">
-                <span class="ms-2 text-sm text-gray-600">{{ __('Remember me') }}</span>
-            </label>
-        </div>
-
-        <div class="flex items-center justify-end mt-4">
-            @if (Route::has('password.request'))
-                <a class="underline text-sm text-gray-600 hover:text-gray-900 rounded-md focus:outline-none focus:ring-2 focus:ring-offset-2 focus:ring-indigo-500" href="{{ route('password.request') }}">
-                    {{ __('Forgot your password?') }}
-                </a>
-            @endif
-
-            <x-primary-button class="ms-3">
-                {{ __('Log in') }}
-            </x-primary-button>
-        </div>
-    </form>
-</x-guest-layout>
+    </section>
+@endsection

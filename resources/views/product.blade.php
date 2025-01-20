@@ -16,8 +16,10 @@
                 <select name="category" class="form-control">
                     <option value="">Pilih Kategori</option>
                     <option value="Coffe" {{ request()->category == 'coffe' ? 'selected' : '' }}>Coffe</option>
+                    <option value="Hot Coffe" {{ request()->category == 'hot coffe' ? 'selected' : '' }}>Hot Coffe</option>
                     <option value="Milk" {{ request()->category == 'milk' ? 'selected' : '' }}>Milk</option>
                     <option value="Food" {{ request()->category == 'food' ? 'selected' : '' }}>Food</option>
+                    <option value="Snaks" {{ request()->category == 'snaks' ? 'selected' : '' }}>Snaks</option>
                 </select>
             </div>
             <div class="col-md-4">

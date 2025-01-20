@@ -9,7 +9,7 @@ use Illuminate\Support\Facades\Storage;
 class ProductController extends Controller
 {
 
-// Menampilkan daftar produk (Admin dan Non-Admin)
+// Menampilkan daftar produk (Admin)
 public function index(Request $request)
 {
     $query = Product::query();
