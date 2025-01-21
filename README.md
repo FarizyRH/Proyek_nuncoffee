@@ -55,7 +55,7 @@ Sistem Informasi Nun Coffe adalah sebuah sistem informasi yang diaplikasikan pad
 
 **2.1.1 Antarmuka Sistem**
 
-![alt text](BerkasGambar/usercase)
+![alt text](BerkasGambar/usercase.jpg)
 
 Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin mempunyai fungsi mengelola data dan pengunjung bisa melihat informasi serta memberikan komentar.
 
@@ -84,8 +84,6 @@ Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin me
 
 
 **2.1.3 Antarmuka Perangkat Keras**
-
-![alt text]()
 
 Antarmuka perangkat keras yang digunakan untuk mengoperasikan perangkat lunak Nun coffe antara lain: 
 
