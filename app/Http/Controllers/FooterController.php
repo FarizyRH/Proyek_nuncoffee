@@ -53,8 +53,9 @@ class FooterController extends Controller
     $request->validate([
         'alamat' => 'required|string|max:255',
         'nomor_telepon' => 'required|string|max:20',
-        'instagram_link' => 'required|url',
-        'gojek_link' => 'required|url',
+        'instagram_link' => 'required|string',
+        'gojek_link' => 'required|string',
+        'image' => 'nullable|image|mimes:jpeg,png,jpg,gif|max:2048', // Validasi untuk gambar
     ]);
 
     // Cari data footer berdasarkan ID
@@ -80,6 +81,18 @@ class FooterController extends Controller
 
     if ($request->has('gojek_link')) {
         $footer->gojek_link = $request->input('gojek_link');
+    }
+
+    // Proses unggah gambar
+    if ($request->hasFile('image')) {
+        // Hapus gambar lama jika ada
+        if ($footer->image && file_exists(public_path('storage/' . $footer->image))) {
+            unlink(public_path('storage/' . $footer->image));
+        }
+
+        // Simpan gambar baru
+        $path = $request->file('image')->store('uploads/footer', 'public');
+        $footer->image = $path;
     }
 
     // Simpan perubahan

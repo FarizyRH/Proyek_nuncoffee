@@ -1,3 +1,7 @@
+<?php
+    use App\Models\Footer;
+    $footerData = Footer::all()->keyBy('id');
+?>
 <div class="flex h-screen">
     <!-- Sidebar (Navbar) -->
     <nav x-data="{ open: false }" class="bg-white border-r border-gray-100 w-64 fixed h-full">
@@ -5,7 +9,7 @@
         <div class="shrink-0 flex items-center h-16 border-b border-gray-200 px-4">
             <div class="main-header-one__bottom-left">
                 <div class="w-[75px] h-[45px]  aspect-[5/3]">
-                    <a href=""><img src="{{ asset('01-html-file/assets/images/logo/2.png') }}" class="object-contain w-full h-full">
+                    <a href=""><img src="{{ asset('storage/' . $footerData[1]->image) }}" class="object-contain w-full h-full">
                     </a>
                 </div>
             </div>

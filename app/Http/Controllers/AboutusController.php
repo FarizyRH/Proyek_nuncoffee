@@ -49,44 +49,46 @@ class AboutusController extends Controller
         $request->validate([
             'title' => 'required|string|max:255',
             'description' => 'required|string',
-            'date' => 'required|date', // Validasi untuk tanggal
             'image' => 'nullable|array',
-            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:2048',
-            'selected_image' => 'nullable|string',
+            'image.*' => 'image|mimes:jpeg,png,jpg,gif,svg|max:10098',
+            'selected_image' => 'nullable|string',  // Menangani gambar yang dipilih untuk dihapus
         ]);
 
         // Ambil data AboutUs yang sudah ada
-        $aboutus = AboutUs::findOrFail($id);
+        $aboutus = AboutUs::find($id);
         $aboutus->title = $request->title;
         $aboutus->description = $request->description;
-        $aboutus->date = $request->date; // Simpan nilai tanggal dari request
 
-        // Proses gambar
+        // Ambil gambar yang sudah ada
         $images = $aboutus->image ? explode(',', $aboutus->image) : [];
 
-        // Proses gambar baru
+        // Proses gambar baru jika ada
         if ($request->hasFile('image')) {
             foreach ($request->file('image') as $image) {
+                // Simpan gambar baru
                 $path = $image->store('aboutus', 'public');
-                $images[] = $path;
+                $images[] = $path; // Menambahkan gambar baru ke array gambar
             }
         }
 
-        // Ganti gambar tertentu jika ada
+        // Jika ada gambar yang dipilih untuk diganti, ganti dengan gambar baru
         if ($request->has('selected_image')) {
+            // Ganti gambar yang dipilih dengan gambar baru
             $selectedImageIndex = array_search($request->selected_image, $images);
             if ($selectedImageIndex !== false) {
+                // Ganti gambar yang dipilih dengan gambar baru
+                // Pastikan gambar baru telah di-upload
                 if ($request->hasFile('image')) {
-                    $newImage = $request->file('image')[0];
-                    $path = $newImage->store('aboutus', 'public');
-                    $images[$selectedImageIndex] = $path;
+                    $newImage = $request->file('image')[0];  // Ambil gambar baru pertama
+                    $path = $newImage->store('aboutus', 'public'); // Upload gambar baru
+                    $images[$selectedImageIndex] = $path; // Ganti gambar yang dipilih
                 }
             }
         }
 
-        // Hapus gambar tertentu jika ada
+        // Jika ada gambar yang dipilih untuk dihapus, hapus gambar tersebut
         if ($request->has('delete_image')) {
-            $images = array_filter($images, function ($image) use ($request) {
+            $images = array_filter($images, function($image) use ($request) {
                 return $image !== $request->delete_image;
             });
 
@@ -102,5 +104,6 @@ class AboutusController extends Controller
 
         return redirect()->route('aboutus.index')->with('success', 'About Us updated successfully');
     }
-
 }
+
+

@@ -11,11 +11,12 @@ class Footer extends Model
     // Tentukan nama tabel jika tidak menggunakan nama default (yang sudah otomatis plural)
     protected $table = 'footer';
 
-    // Tentukan kolom yang boleh diisi (mass assignable)
     protected $fillable = [
         'alamat',
         'nomor_telepon',
         'instagram_link',
         'gojek_link',
+        'image',
     ];
+
 }

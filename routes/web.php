@@ -77,7 +77,7 @@ Route::middleware('auth')->group(function () {
 
 
 Route::resource('products', ProductController::class)->only(['index', 'show']);
-Route::resource('aboutus', AboutusController::class)->only(['index', 'show']);
+Route::resource('aboutus', AboutusController::class)->only(['index', 'show','update']);
 
 // Rute yang memerlukan autentikasi
 Route::middleware(['auth'])->group(function () {

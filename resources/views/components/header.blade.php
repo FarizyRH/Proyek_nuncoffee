@@ -61,7 +61,7 @@
                         <div class="main-menu__wrapper-inner">
                             <div class="main-header-one__bottom-left">
                                 <div class="logo-one">
-                                    <a href=""><img src="{{ asset('01-html-file/assets/images/logo/2.png') }}" class="h-[75px] w-[100px]">
+                                    <a href=""><img src="{{ asset('storage/' . $footerData[1]->image) }}" class="h-[75px] w-[100px]">
                                     </a>
                                 </div>
                             </div>

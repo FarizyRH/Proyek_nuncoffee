@@ -18,7 +18,7 @@
         @endif
 
         <!-- Form Edit Footer -->
-        <form action="{{ route('footer.update', $footerData->id) }}" method="POST">
+        <form action="{{ route('footer.update', $footerData->id) }}" method="POST" enctype="multipart/form-data">
             @csrf
             @method('PUT')
 
@@ -68,6 +68,23 @@
                     value="{{ old('gojek_link', $footerData->gojek_link) }}"
                     class="mt-1 block w-full border-gray-300 rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
                     required />
+            </div>
+
+            <!-- Input Gambar -->
+            <div class="mb-4">
+                <label for="image" class="block text-sm font-medium">Upload Gambar</label>
+                <input
+                    type="file"
+                    id="image"
+                    name="image"
+                    class="mt-1 block w-full border-gray-300 rounded-md focus:ring focus:ring-blue-300 focus:outline-none"
+                    accept="image/*" />
+
+                <!-- Tampilkan gambar lama jika ada -->
+                @if($footerData->image)
+                    <p class="mt-2">Gambar Saat Ini:</p>
+                    <img src="{{ asset('storage/' . $footerData->image) }}" alt="Current Image" class="object-contain w-full h-full">
+                @endif
             </div>
 
             <!-- Tombol Submit -->

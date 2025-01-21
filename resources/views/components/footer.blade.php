@@ -49,7 +49,7 @@ $footerData = Footer::all()->keyBy('id');
         <div class="container">
             <div class="site-footer__top-inner">
                 <div class="site-footer__logo">
-                    <a href="index.html"><img src="{{ asset('01-html-file/assets/images/logo/3.svg') }}"
+                    <a href="index.html"><img src="{{ asset('storage/' . $footerData[1]->image) }}"
                             class="h-[75px] w-[100px]" alt=""></a>
                 </div>
             </div>

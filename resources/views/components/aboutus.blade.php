@@ -1,6 +1,4 @@
-<section class="product">
-    <!-- Gambar berada di atas -->
-    @if($aboutus->image)
+@if($aboutus->image)
         @php
             $images = explode(',', $aboutus->image); // Memecah gambar yang dipisahkan koma
         @endphp
@@ -17,9 +15,13 @@
             <div class="swiper-pagination"></div>
         </div>
     @endif
+<section class="product">
+    <!-- Gambar berada di atas -->
+
 
     <div class="container mt-3 text-center">
         <h1>{{ $aboutus->title }}</h1>
+        <br>
         <p>{{ $aboutus->description }}</p>
         <p><strong>Tanggal: </strong> {{ $aboutus->date }}</p>
 
@@ -45,3 +47,22 @@
         </section>
     </div>
 </section>
+<script>
+    document.addEventListener('DOMContentLoaded', function () {
+        const swiper = new Swiper('.swiper-container', {
+            loop: true, // Slide akan berulang
+            pagination: {
+                el: '.swiper-pagination',
+                clickable: true,
+            },
+            navigation: {
+                nextEl: '.swiper-button-next',
+                prevEl: '.swiper-button-prev',
+            },
+            autoplay: {
+                delay: 5000, // Durasi antar slide (ms)
+                disableOnInteraction: false,
+            },
+        });
+    });
+</script>
