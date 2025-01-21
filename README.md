@@ -121,7 +121,7 @@ Tidak ada
 
 
 ### 2.2 Spesifikasi Kebutuhan Fungsional
-![alt text]()
+![alt text](BerkasGambar/usercase.jpg)
 
 **2.2.1 Admin Login**
 
@@ -129,7 +129,7 @@ Use Case: Login
 
 Diagram:
 
-![alt text]()
+![alt text](BerkasGambar/adminlogin.png)
 
 Deskripsi Singkat Admin melakukan login terlebih dahulu sebelum masuk ke tampilan home admin.
 
@@ -147,7 +147,7 @@ Use Case: Input data Galeri
 
 Diagram:
 
-![alt text]()
+![alt text](BerkasGambar/data galeri.png)
 
 Deskripsi Singkat Admin menginputkan data galeri dengan menambahkan judul dan gambar.
 
@@ -165,7 +165,7 @@ Use Case: Input Data Product
 
 Diagram:
 
-![alt text]() 
+![alt text](BerkasGambar/data product.png) 
 
 Deskripsi singkat admin dapat menampilkan halaman input product dan menambahkan product sesuai kategorinya.
 
@@ -183,7 +183,7 @@ Use Case: Input Data About us
 
 Diagram:
 
-![alt text]() 
+![alt text](BerkasGambar/data about us.png) 
 
 Deskripsi singkat admin dapat Mengedit halaman about us dengan mengedit judul, isi about us dan gambar.
 
@@ -201,7 +201,7 @@ Use Case: Mengunjungi website
 
 Diagram:
 
-![alt text]() 
+![alt text](BerkasGambar/user web.png) 
 
 Deskripsi singkat Pengunjung mengunjungi website dan melihat informasi tentang cafe yang ada di website seperti, jam operasional, lokasi, menu product, feedback dan testimoni dari pelanggan yang datang. Pengunjung juga dapat memberikan komentar di halaman feed back dan testimoni terkait cafe dan productnya.
 
