@@ -1,66 +1,260 @@
-<p align="center"><a href="https://laravel.com" target="_blank"><img src="https://raw.githubusercontent.com/laravel/art/master/logo-lockup/5%20SVG/2%20CMYK/1%20Full%20Color/laravel-logolockup-cmyk-red.svg" width="400" alt="Laravel Logo"></a></p>
+![alt text](BerkasGambar/Sampul.png)
 
-<p align="center">
-<a href="https://github.com/laravel/framework/actions"><img src="https://github.com/laravel/framework/workflows/tests/badge.svg" alt="Build Status"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/dt/laravel/framework" alt="Total Downloads"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/v/laravel/framework" alt="Latest Stable Version"></a>
-<a href="https://packagist.org/packages/laravel/framework"><img src="https://img.shields.io/packagist/l/laravel/framework" alt="License"></a>
-</p>
+## BAB I Pendahuluan
+### 1.1 Tujuan 
 
-## About Laravel
+Dokumen Software Requirements Specification (SRS) ini disusun untuk memberikan gambaran mengenai pengembangan website untuk "Nun Coffee". Tujuandari website ini adalah untuk meningkatkan visibilitas dan aksesibilitas UMKM, khususnya bisnis kopi, di dunia digital. 
 
-Laravel is a web application framework with expressive, elegant syntax. We believe development must be an enjoyable and creative experience to be truly fulfilling. Laravel takes the pain out of development by easing common tasks used in many web projects, such as:
 
-- [Simple, fast routing engine](https://laravel.com/docs/routing).
-- [Powerful dependency injection container](https://laravel.com/docs/container).
-- Multiple back-ends for [session](https://laravel.com/docs/session) and [cache](https://laravel.com/docs/cache) storage.
-- Expressive, intuitive [database ORM](https://laravel.com/docs/eloquent).
-- Database agnostic [schema migrations](https://laravel.com/docs/migrations).
-- [Robust background job processing](https://laravel.com/docs/queues).
-- [Real-time event broadcasting](https://laravel.com/docs/broadcasting).
+### 1.2 Lingkup
+Website NunCoffe ini akan berfungsi sebagai platform yang mempermudah pelanggan dalam mengakses informasi tentang NunCoffe.
 
-Laravel is accessible, powerful, and provides tools required for large, robust applications.
+### 1.3 Akronim, singkatan, definisi
+| Istilah | Definisi |
+| ------ | ------ |
+|   SRS     |    Software Requirement Specification    |
+|    Login    | Digunakan untuk mengakses aplikasi       |
+|   Software Requirement Specification     | perangkat lunak yang akan dibuat dan sebagai penyembatani komunikasi pembuat dengan pengguna       |
+|    Use Case    | situasi dimana sistem anda digunakan untuk memenuhi satu atau lebih kebutuhan pemakaian anda       |
 
-## Learning Laravel
 
-Laravel has the most extensive and thorough [documentation](https://laravel.com/docs) and video tutorial library of all modern web application frameworks, making it a breeze to get started with the framework.
+### 1.4 Referensi
+Referensi yang digunakan dalam pengembangan perangkat lunak ini adalah:
 
-You may also try the [Laravel Bootcamp](https://bootcamp.laravel.com), where you will be guided through building a modern Laravel application from scratch.
+-https://pointcoffee.id/
 
-If you don't feel like reading, [Laracasts](https://laracasts.com) can help. Laracasts contains thousands of video tutorials on a range of topics including Laravel, modern PHP, unit testing, and JavaScript. Boost your skills by digging into our comprehensive video library.
+### 1.5 Overview
+Bab selanjutnya akan menjelaskan sistem yang diterapkan pada aplikasi. Menjelaskan gambaran umum dari aplikasi, sistem interface aplikasi dan alur sistemnya. Pada bab 2 merupakan deskripsi dari aplikasi yang akan diterapkan pada aplikasi yang dibuat.
 
-## Laravel Sponsors
+---
 
-We would like to extend our thanks to the following sponsors for funding Laravel development. If you are interested in becoming a sponsor, please visit the [Laravel Partners program](https://partners.laravel.com).
 
-### Premium Partners
+## BAB II Gambaran Umum
+Nun Coffee adalah sebuah usaha kopi lokal yang berfokus pada penyediaan kopi berkualitas dengan cita rasa yang khas, serta memberikan pengalaman menikmati kopi yang menyenangkan bagi para pelanggan. Sebagai sebuah UMKM, Nun Coffee bertujuan untuk memperkenalkan produk kopi terbaiknya kepada lebih banyak pelanggan, baik secara lokal maupun lebih luas, melalui platform digital yang mudah diakses.
 
-- **[Vehikl](https://vehikl.com/)**
-- **[Tighten Co.](https://tighten.co)**
-- **[WebReinvent](https://webreinvent.com/)**
-- **[Kirschbaum Development Group](https://kirschbaumdevelopment.com)**
-- **[64 Robots](https://64robots.com)**
-- **[Curotec](https://www.curotec.com/services/technologies/laravel/)**
-- **[Cyber-Duck](https://cyber-duck.co.uk)**
-- **[DevSquad](https://devsquad.com/hire-laravel-developers)**
-- **[Jump24](https://jump24.co.uk)**
-- **[Redberry](https://redberry.international/laravel/)**
-- **[Active Logic](https://activelogic.com)**
-- **[byte5](https://byte5.de)**
-- **[OP.GG](https://op.gg)**
+Website Nun Coffee akan menjadi pusat informasi dan transaksi untuk pelanggan yang ingin membeli produk kopi, mengetahui informasi mengenai berbagai jenis kopi yang ditawarkan, lokasi kedai, serta berbagai promo atau acara spesial. Website ini juga bertujuan untuk membangun dan memperkuat hubungan antara Nun Coffee dan pelanggan dengan memberikan pengalaman berbelanja yang lebih praktis dan menyenangkan.
 
-## Contributing
+Adapun beberapa fitur utama yang akan ada pada website ini meliputi:
+- View About Us
+- View Product
+- View Feedback
+- View Testimoni
+- Create Feedback
+- Create testimoni
 
-Thank you for considering contributing to the Laravel framework! The contribution guide can be found in the [Laravel documentation](https://laravel.com/docs/contributions).
+Untuk Adminnya, berikut fitur utamanya:
+- Login
+- Input Data Product
+- Update Data About Us
+- Delete Feedback
+- Delete Testimoni
 
-## Code of Conduct
 
-In order to ensure that the Laravel community is welcoming to all, please review and abide by the [Code of Conduct](https://laravel.com/docs/contributions#code-of-conduct).
+### 2.1 Prespektif Produk
+Sistem Informasi Nun Coffe adalah sebuah sistem informasi yang diaplikasikan pada website. Terdapat 2 jenis aktor yaitu admin dan pengunjung. Pengolahan data dilakukan oleh admin pada website dan pengunjung hanya melihat informasi pada website.
 
-## Security Vulnerabilities
+**2.1.1 Antarmuka Sistem**
 
-If you discover a security vulnerability within Laravel, please send an e-mail to Taylor Otwell via [taylor@laravel.com](mailto:taylor@laravel.com). All security vulnerabilities will be promptly addressed.
+![alt text](BerkasGambar/usercase.jpg)
 
-## License
+Sistem Informasi Nun Coffe memiliki 2 aktor yaitu admin dan pengunjung. Admin mempunyai fungsi mengelola data dan pengunjung bisa melihat informasi serta memberikan komentar.
 
-The Laravel framework is open-sourced software licensed under the [MIT license](https://opensource.org/licenses/MIT).
+**2.1.2 Antarmuka Pengguna**
+
+**Halaman Admin**
+|  |  |
+|--|--|
+| ![alt text](BerkasGambar/login.png) Halaman Login admin diminta untuk mengisi username dan password.| ![alt text](BerkasGambar/mainadmin.png) Setelah login admin akan masuk ke Dashboard admin.
+|  |  |
+| ![alt text](BerkasGambar/produkadmin.jpg) Pada Halaman Admin akan terdapat halaman untuk mengelola data product, namun tidak hanya data product tapi admin juga dapat mengelola data galeri, data about us, data feedback dan data testimoni dengan tampilan yang berbeda di halaman yang berbeda juga.| ![alt text](BerkasGambar/editproduk.jpg) Pada Halaman mengelola data product, admin juga dapat menambahkan dan mengupdate data product begitu juga dengan pengelolaan data di tabel lainnya.
+|  |  |
+| ![alt text 1](BerkasGambar/feedbackAdmin.jpg) ![alt text 2](BerkasGambar/usertestimoni.jpg) Admin juga dapat menghapus data feedback dan data testimoni yang mana ketika button hapus di klik akan muncul pop up untuk memastikan admin benar-benar ingin menghapus atau tidak.
+| ![alt text](BerkasGambar/aboutAdmin.jpg) Pada halaman mengelola data about us, admin dapat mengupdate data tersebut.| ![alt text](BerkasGambar/editgaleri.jpg) Pada Halaman data galeri, admin dapat menambahkan data baru berupa judul dari image tersebut dan image, admin juga dapat mengedit dan menghapus data galeri.
+
+**Halaman User**
+|  |  |
+|--|--|
+| ![alt text](BerkasGambar/homepage.png) Pada Halaman pengunjung terdapat dashboard yang berisi tampilan scrolling yang berisi seluruh konten seperti tampilan home, galeri, about us, product, feedback dan testimoni.| ![alt text](BerkasGambar/galery.jpg) Pada Halaman pengunjung terdapat Halaman galeri yang berisi gambar dan judul.
+|  |  |
+| ![alt text](BerkasGambar/aboutAdmin.jpg) Pada Halaman About Us terdapat judul, cerita tentang cafe, gambar dan lokasi atau map yang akan muncul ketika di klik.| ![alt text](BerkasGambar/produkuser.jpg) Di halaman product, pengunjung bisa menlihat berbagai produk mulai dari kategori coffe, noncoffe/milk dan snack. Pengunjung juga bisa mencari produk di kolom search.
+|  |  |
+| ![alt text](BerkasGambar/feedbackuser.jpg) Halaman Feedback di pengunjung, menampilkan umpan balik/review yang diberi oleh pelanggan yang telah datang ke Nun Coffe.| ![alt text](BerkasGambar/tambahfeedbacl.jpg) ![alt text](BerkasGambar/editfeedback.jpg) pengunjung juga bisa menambahkan feedback, mengedit dan menghapus feedback yang telah mereka buat sendiri.
+|  |  |
+| ![alt text](BerkasGambar/usertestimoni.jpg) Di Halaman Testimoni, pengunjung dapat melihat testimoni yang di berikan oleh pelanggan cafe tersebut.| ![alt text](BerkasGambar/tambahtestimoni.jpg) ![alt text](BerkasGambar/edittestimoni.jpg) Pengunjung juga dapat menambah, mengedit dan menghapus data Testimoni yang mereka buat.
+
+
+**2.1.3 Antarmuka Perangkat Keras**
+
+Antarmuka perangkat keras yang digunakan untuk mengoperasikan perangkat lunak Nun coffe antara lain: 
+
+- PC / laptop dan smartphone untuk menjalankan aplikasi ini.
+
+
+**2.1.4 Antarmuka Perangkat lunak**
+
+Tidak Ada
+
+
+**2.1.5 Antarmuka Komunikasi**
+Antarmuka komunikasi yang digunakan untuk mengoperasikan Perangkat Lunak Nun Coffe antara lain :
+
+- PC
+- wifi/Jaringan
+
+
+**2.1.6 Batasan Memori**
+
+Tidak ada
+
+
+**2.1.7 Operasi-operasi**
+| Operasi | Fungsi |
+| ------ | ------ |
+| Login | Digunakan untuk mengakses aplikasi |
+| Input Data | Digunakan untuk memasukkan data-data |
+| Hapus | Digunakan Untuk menghapus data |
+| Edit | Digunakan untuk Mengupdate atau mengubah data |
+| View | Digunakan untuk menampilkan data |
+| Simpan | Diguankan untuk menyimpan data |
+
+
+
+
+### 2.2 Spesifikasi Kebutuhan Fungsional
+![alt text](BerkasGambar/usercase.jpg)
+
+**2.2.1 Admin Login**
+
+Use Case: Login
+
+Diagram:
+
+![alt text](BerkasGambar/adminlogin.png)
+
+Deskripsi Singkat Admin melakukan login terlebih dahulu sebelum masuk ke tampilan home admin.
+
+Deskripsi Langkah-Langkah
+
+1. Admin melakukan login dengan username dan password.
+2. Sistem melakukan validasi login.
+3. Bila sukses sistem akan mengarahkan ke home admin.
+4. Bila gagal sistem akan menampilkan peringatan.
+
+
+**2.2.2 Admin Input data Galeri**
+
+Use Case: Input data Galeri
+
+Diagram:
+
+![alt text](BerkasGambar/data galeri.png)
+
+Deskripsi Singkat Admin menginputkan data galeri dengan menambahkan judul dan gambar.
+
+Deskripsi Langkah-Langkah
+
+1. Sistem akan menampilkan tampilan inputan galeri.
+2. Admin dapat melihat, menambahkan dan mengedit galeri
+3. Sistem akan menyimpan ke database.
+4. Jika sudah disimpan sistem akan menampilkan data yang sudah disimpan.
+
+
+**2.2.3 Admin Input data Product**
+
+Use Case: Input Data Product
+
+Diagram:
+
+![alt text](BerkasGambar/data product.png) 
+
+Deskripsi singkat admin dapat menampilkan halaman input product dan menambahkan product sesuai kategorinya.
+
+Deskripsi Langkah-langkah:
+
+1. Sistem akan menampilkan tampilan product.
+2. Admin dapat menambahkan, menghapus dan mengedit product.
+3. Sistem akan menyimpan ke database.
+4. Jika sudah disimpan sistem akan menampilkan data yang sudah disimpan.
+
+
+**2.2.4 Admin Input data About us**
+
+Use Case: Input Data About us
+
+Diagram:
+
+![alt text](BerkasGambar/data about us.png) 
+
+Deskripsi singkat admin dapat Mengedit halaman about us dengan mengedit judul, isi about us dan gambar.
+
+Deskripsi Langkah-langkah:
+
+1. Sistem akan menampilkan tampilan about us.
+2. Admin dapat mengedit data product.
+3. Sistem akan menyimpan ke database.
+4. Jika sudah disimpan sistem akan menampilkan data yang sudah disimpan.
+
+
+**2.2.5 Pengunjung mengunjungi Website**
+
+Use Case: Mengunjungi website
+
+Diagram:
+
+![alt text](BerkasGambar/user web.png) 
+
+Deskripsi singkat Pengunjung mengunjungi website dan melihat informasi tentang cafe yang ada di website seperti, jam operasional, lokasi, menu product, feedback dan testimoni dari pelanggan yang datang. Pengunjung juga dapat memberikan komentar di halaman feed back dan testimoni terkait cafe dan productnya.
+
+Deskripsi Langkah-langkah:
+
+1. Sistem akan menampilkan halaman-halaman konten.
+2. Pengunjung melihat informasi yang ada pada website seperti informasi tentang cafe atau menu-menu yang ada di cafe dan lokasi cafe serta juga dapat memberikan komentar tentang cafe di halaman feedback dan komentar tentang  makanan dan minumannya di halaman testimoni.
+3. Pengunjung juga dapat mengedit feedback dan testimoni milik mereka yang telah mereka buat.
+
+
+
+# Pembagian  tugas
+**Laporan**
+
+BAB 1 -> sekar
+
+BAB 2 - 2.1 -> umar
+
+2.1.1 -> umar
+
+2.1.2 -> farizy
+
+2.1.3 -> umar
+
+2.1.4 -> sekar
+
+2.1.5 -> sekar
+
+2.1.6 -> sekar
+
+2.1.7 -> sekar
+
+2.2 -> umar
+
+
+
+**Sistem**
+
+Dashboard -> farizy
+
+Login -> farizy
+
+Register -> farizy
+
+Galeri -> farizy
+
+About Us -> umar
+
+Product -> umar
+
+Feedback -> sekar
+
+Testimoni -> sekar
+
+Akun -> farizy
+
